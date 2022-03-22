@@ -33,7 +33,7 @@ export function getAllVideoGames() {
     return async function (dispatch) {
         dispatch({type: "GET_INICIAL"})
         try {
-            let data = await axios.get('https://backendhenrypi.herokuapp.com/api/videogames', []);
+            let data = await axios.get('https://backendhenrypi.herokuapp.com/api/videogames',);
             dispatch({
                 type: "TRAER_TODOS",
                 payload: data.data,
