@@ -1,3 +1,14 @@
+import { GET_INICIAL, 
+    TRAER_UNO_NOMBRE,
+    FILTRAR_ORIGEN,
+    TRAER_TODOS, 
+    TRAER_GENEROS, 
+    ORDENAR_ALFABETICAMENTE, 
+    ORDENAR_PUNTUACION, 
+    TRAER_DETALLES,
+    ORDENAR_GENEROS, 
+    BORRAR_DETALLES, } from '../action/constantes.js'
+
 let initialState = {
     videogames: [],
     allvideogames: [],
@@ -10,12 +21,12 @@ let initialState = {
 function rootReducer (state = initialState, action) {
 
     switch (action.type) {
-        case "GET_INICIAL":
+        case GET_INICIAL:
                 return {
                     ...state,
                     flagLoad:true
                 }
-        case "TRAER_TODOS":
+        case TRAER_TODOS:
                 return {
                     ...state,
                     videogames: action.payload,
@@ -23,13 +34,13 @@ function rootReducer (state = initialState, action) {
                     flagLoad:false
                 };
 
-        case "TRAER_GENEROS":
+        case TRAER_GENEROS:
                 return {
                     ...state,
                     genres: action.payload,
                 };
 
-        case "ORDENAR_ALFABETICAMENTE":
+        case ORDENAR_ALFABETICAMENTE:
             let aordenar = [...state.videogames]
                 switch(action.payload){
                 case "ASCENDENTE":
@@ -61,7 +72,7 @@ function rootReducer (state = initialState, action) {
                     }
                 };
 
-        case "ORDENAR_PUNTUACION":
+        case ORDENAR_PUNTUACION:
             let aordenarrat = [...state.allvideogames]
                 switch(action.payload){
                 case "ASCENDENTE":
@@ -93,7 +104,7 @@ function rootReducer (state = initialState, action) {
                         }
                     };
 
-        case "ORDENAR_GENEROS":
+        case ORDENAR_GENEROS:
             const AllVideogames = state.allvideogames;
       const genresFiltered = action.payload === "All" ? AllVideogames : AllVideogames.filter((game) =>  game.genres.find((genre) => {
                 return genre.name === action.payload;
@@ -104,12 +115,12 @@ function rootReducer (state = initialState, action) {
         videogames: genresFiltered,
                     };
 
-        case "TRAER_DETALLES":
+        case TRAER_DETALLES:
         return {
         ...state,
         detail: action.payload,
                 };
-        case "BORRAR_DETALLES":
+        case BORRAR_DETALLES:
             return {
             ...state,
             detail: null,

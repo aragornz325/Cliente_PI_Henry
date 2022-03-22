@@ -1,16 +1,26 @@
 import axios from "axios";
+import { GET_INICIAL, 
+ TRAER_UNO_NOMBRE,
+ FILTRAR_ORIGEN,
+ TRAER_TODOS, 
+ TRAER_GENEROS, 
+ ORDENAR_ALFABETICAMENTE, 
+ ORDENAR_PUNTUACION, 
+ TRAER_DETALLES,
+ ORDENAR_GENEROS, 
+ BORRAR_DETALLES, } from './constantes.js'
 
 
 export function traerpornombre(name) {
     return async function (dispatch) {
       try {
         dispatch({
-          type: 'GET_INICIAL'
+          type: GET_INICIAL
         })
         let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
         );
         dispatch({
-          type: "GET_VIDEOGAMES_NAME",
+          type: TRAER_UNO_NOMBRE,
           payload: json.data,
         });
       } catch (error) {
@@ -23,7 +33,7 @@ export function traerpornombre(name) {
 
 export function filterByOrigin(payload) {
     return {
-    type: "FILTER_BY_ORIGIN",
+    type: FILTRAR_ORIGEN,
     payload,
     };
 }
@@ -31,11 +41,11 @@ export function filterByOrigin(payload) {
 
 export function getAllVideoGames() {
     return async function (dispatch) {
-        dispatch({type: "GET_INICIAL"})
+        dispatch({type: GET_INICIAL})
         try {
             let data = await axios.get('https://backendhenrypi.herokuapp.com/api/videogames',);
             dispatch({
-                type: "TRAER_TODOS",
+                type: TRAER_TODOS,
                 payload: data.data,
             })
             //alert('se cargaron todos los juegos')
@@ -54,7 +64,7 @@ export function getGenres() {
             let datagen = await axios.get(`https://backendhenrypi.herokuapp.com/api/genres`);
             //console.log(datagen.data)
             dispatch({
-                type: "TRAER_GENEROS",
+                type: TRAER_GENEROS,
                 payload: datagen.data
             })
             //alert(`se cargo ${datagen.data}`)
@@ -67,21 +77,21 @@ export function getGenres() {
 
 export function ordenalfabetico(payload) {
     return {
-        type: "ORDENAR_ALFABETICAMENTE",
+        type: ORDENAR_ALFABETICAMENTE,
         payload: payload,
     }
 };
 
 export function ordenrating(payload){
     return {
-        type: "ORDENAR_PUNTUACION",
+        type: ORDENAR_PUNTUACION,
         payload: payload
     }
 };
 
 export function ordengeneros(payload){
     return {
-        type: "ORDENAR_GENEROS",
+        type: ORDENAR_GENEROS,
         payload: payload
     }
 };
@@ -91,7 +101,7 @@ export function traerdetalles(id) {
     try {
         let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogame/" + id);
         dispatch({
-        type: "TRAER_DETALLES",
+        type: TRAER_DETALLES,
         payload: json.data
     });
     console.log(json.data)
@@ -104,7 +114,7 @@ export function traerdetalles(id) {
 
 export function borrardetalles() {
     return {
-    type: "BORRAR_DETALLES"
+    type: BORRAR_DETALLES
     }
 }
 
