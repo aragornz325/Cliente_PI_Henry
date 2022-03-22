@@ -5,10 +5,9 @@ export function traerpornombre(name) {
     return async function (dispatch) {
       try {
         dispatch({
-          type: 'GET_INIT'
+          type: 'GET_INICIAL'
         })
-        let json = await axios.get(
-          "https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
+        let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
         );
         dispatch({
           type: "GET_VIDEOGAMES_NAME",
