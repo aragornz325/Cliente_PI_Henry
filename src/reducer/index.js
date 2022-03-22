@@ -62,7 +62,7 @@ function rootReducer (state = initialState, action) {
                 };
 
         case "ORDENAR_PUNTUACION":
-            let aordenarrat = [...state.videogames]
+            let aordenarrat = [...state.allvideogames]
                 switch(action.payload){
                 case "ASCENDENTE":
                     return {

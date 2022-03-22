@@ -88,7 +88,7 @@ export default function VideogameCreate() {
         <button className={style.BackToHomeButton}>Back to Home</button>
       </Link>
       <div className={style.transparentForm}>
-        <h1 className={style.title}>Create your videogame!</h1>
+        <h1 className={style.title}>Crea un videogame</h1>
         <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
           <div className={style.nameDiv}>
             <input
