@@ -1,0 +1,33 @@
+.GeneralSearch {
+    position: absolute;
+    top: 60px; 
+    left: 550px;
+    
+}
+
+.SearchInput {
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 15px;
+    width: 180px;
+    height: 28px;  
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgb(9, 255, 0);
+    background-color: rgb(5, 97, 1); 
+    
+}
+
+.buttonSearch {
+    position: relative;
+    left: 4px;
+    border-radius: 5px;
+    bottom: 1px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    box-shadow: 3px 3px 3px rgba(9, 255, 0);
+    background-color: rgba(5, 97, 1); 
+    height: 29px; 
+   
+}
