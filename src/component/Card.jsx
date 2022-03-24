@@ -11,7 +11,7 @@ return (
     
     <div className="card-item__details">
       <div>
-        <img className="card-item__details--img" src={playIcon} alt="Play Icon" />
+        {/* <img className="card-item__details--img" src={playIcon} alt="Play Icon" /> */}
         <img className="card-item__details--img" src={plusIcon} alt="Plus Icon" />
     </div>
     <p className="card-item__details--title">{name}</p>

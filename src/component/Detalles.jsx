@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {traerdetalles, borrardetalles } from '../action/index'
-import '../assets/styles/detalles.scss'
 import style from '../assets/styles/detalles.module.css'
-import matrixfondo from '../assets/statics/matrix-code2.gif'
+
 
 
 export default function Detalles(props) {
@@ -59,14 +58,17 @@ return (
             </h5>
         </div>
         <div>
-            <img className={style.backgroundBlur} src={matrixfondo} alt="BackgroundImage.jpg"/>
+            <img className={style.backgroundBlur} src={detallado.image} alt="BackgroundImage.jpg"/>
         </div>
         </div>
     ) : (
         <div className={style.loadersGeneral} >
-        <div className={style.megaman}>  <img src="../assets/statics/loader.gif" alt="loaderMegaman.gif" /> </div>
-    <div>   <img src="" alt="loading.gif" /></div>
-    </div>
+
+        <div className={style.loadergif}>  
+        <img src="../assets/statics/conectando.gif" alt="loader" /> 
+            <h1>redireccionando...</h1>
+        </div>
+       </div>
         )}
     <div className={style.goBackDiv} >
     <Link to="/home">

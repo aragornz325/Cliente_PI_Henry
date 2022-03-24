@@ -10,6 +10,7 @@ import { GET_INICIAL,
  ORDENAR_GENEROS, 
  BORRAR_DETALLES, } from './constantes.js'
 
+//  https://backendhenrypi.herokuapp.com
 
 export function traerpornombre(name) {
     return async function (dispatch) {
@@ -17,13 +18,14 @@ export function traerpornombre(name) {
         dispatch({
           type: GET_INICIAL
         })
-        let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
+        let json = await axios.get("http://localhost:3001/api/videogames?name=" + name
         );
         dispatch({
           type: TRAER_UNO_NOMBRE,
           payload: json.data,
         });
       } catch (error) {
+        alert(`no se puede completar debido al ${error}`)
         console.log(error);
       }
     };
@@ -50,7 +52,7 @@ export function getAllVideoGames() {
             })
             //alert('se cargaron todos los juegos')
         } catch(error) {
-            alert(`se cago algo, revisa`)
+            alert(`no se puede iniciar debido al ${error}`)
             console.log(error)
             
         }
@@ -69,6 +71,7 @@ export function getGenres() {
             })
             //alert(`se cargo ${datagen.data}`)
         } catch(error) {
+            alert(`no se puede trar los generos debido al ${error}`)
             console.log(error)
         }
     }
@@ -107,7 +110,7 @@ export function traerdetalles(id) {
     console.log(json.data)
     } catch (error) {
         console.log(error);
-        alert ('el detalle no esta disponible')
+        alert (`el detalle no esta disponible--->${error}`)
     }
     };
 }
@@ -121,7 +124,13 @@ export function borrardetalles() {
 
 export function crearJuego(payload) {
     return async function () {
-    let json = await axios.post("https://backendhenrypi.herokuapp.com/api/videogame", payload);
-    return json;
+    try {
+        let json = await axios.post("https://backendhenrypi.herokuapp.com/api/videogame", payload);
+        alert('juego creado exitosamente') 
+        return json;
+    } catch(error) {
+        console.log(error)
+        alert(`el juego no fue creado debido al ${error}`)
+    }
 }
 }

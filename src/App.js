@@ -1,10 +1,11 @@
 import React from "react";
 import  {BrowserRouter, Switch, Route} from "react-router-dom"
 import Home from "./component/Home";
-import NavBar from "./component/NavBar";
+
 import CreaVideogame from "./component/CrearVideogame.jsx"
 import Detalles from "./component/Detalles";
 import Landing from "./component/Landing";
+
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route exact path='/home' component={Home} />
         <Route exact path='/crearvideogame' component={CreaVideogame} />
         <Route path='/home/:id' component={Detalles}/> 
+        
+        
+
+        
       </Switch>
     
     </BrowserRouter>

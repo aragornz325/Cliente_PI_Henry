@@ -33,9 +33,7 @@ useEffect(() => {
              Start
          </button>
 
-         <button className={style.btn3}>
-             Start
-         </button>
+         
      </Link>
     </div>)}
 

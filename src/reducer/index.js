@@ -44,20 +44,21 @@ function rootReducer (state = initialState, action) {
             let aordenar = [...state.videogames]
                 switch(action.payload){
                 case "ASCENDENTE":
+                    
                     return {
                         ...state,
-                        videogames: aordenar.sort(function(a,b){
-                            if(a.name > b.name) return 1;
-                            if(a.name < b.name) return -1;
+                            videogames: aordenar.sort(function( a , b ){
+                            if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                            if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                             return 0
                         })
                     };
                 case "DESCENDENTE":
                     return {
                         ...state,
-                        videogames: aordenar.sort((a, b) => {
-                            if(a.name > b.name) return -1;
-                            if(a.name < b.name) return 1;
+                        videogames: aordenar.sort((a ,b) => {
+                            if(a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                            if(a.name.toLowerCase() < b.name.toLowerCase()) return 1;
                             return 0
                          })
                     };
@@ -73,7 +74,7 @@ function rootReducer (state = initialState, action) {
                 };
 
         case ORDENAR_PUNTUACION:
-            let aordenarrat = [...state.allvideogames]
+            let aordenarrat = [...state.videogames]
                 switch(action.payload){
                 case "ASCENDENTE":
                     return {
@@ -125,11 +126,15 @@ function rootReducer (state = initialState, action) {
             ...state,
             detail: null,
                     };
+        case TRAER_UNO_NOMBRE:
+            return {
+            ...state,
+            videogames: action.payload,
+            flagLoad: false,
+            };
+        
         default: 
                 return { ...state}
-
-
-
     }
 }
 

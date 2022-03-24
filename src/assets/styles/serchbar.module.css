@@ -1,6 +1,6 @@
 .GeneralSearch {
     position: absolute;
-    top: 60px; 
+    top: 20px; 
     left: 550px;
     
 }
@@ -14,9 +14,13 @@
     height: 28px;  
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgb(9, 255, 0);
-    background-color: rgb(5, 97, 1); 
-    
+    background-color: rgba(68, 200, 56, 0.678); 
 }
+
+.buttonSearch:hover{
+    transform: scale(1.1);
+}
+
 
 .buttonSearch {
     position: relative;
@@ -27,7 +31,7 @@
     font-weight: bold;
     border: none;
     box-shadow: 3px 3px 3px rgba(9, 255, 0);
-    background-color: rgba(5, 97, 1); 
+    background-color: rgba(68, 200, 56, 0.678); 
     height: 29px; 
    
 }

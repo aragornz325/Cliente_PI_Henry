@@ -26,7 +26,7 @@ export default function SearchBar() {
          name='search'
          id='Search'
          value={name}
-         placeholder='Search a videogame'
+         placeholder=''
          onChange={handleInputChange}/>
          <button className={style.buttonSearch}>Search</button>
          </form>

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import loadergif from '../assets/statics/cirulito.gif'
 import SearchBar from "./SearchBar";
 import style from '../assets/styles/home.module.css'
-import loader from '../assets/statics/cirulito.gif'
+import loader from '../assets/statics/transp.gif'
 import gameover from '../assets/statics/ASBCM8.gif'
 
 
@@ -25,14 +25,16 @@ const Home = () => {
     
     const [ aquiyahora, setaquiyahora] = useState(1)
     const [orden, setOrden] = useState("")
-    const vistaporpagina = 14;
+    const vistaporpagina = 15;
     
     //console.log(videogames)
     //console.log(genres)
+    //console.log(aquiyahora)
     
     const mostrarultimo = aquiyahora * vistaporpagina
     const mostrarprimer = mostrarultimo - vistaporpagina
     const juegosenpantalla = videogames.slice(mostrarprimer, mostrarultimo)
+    console.log(juegosenpantalla)
     
     const paginado = (numero) =>{
         setaquiyahora(numero)
@@ -79,10 +81,10 @@ return (
       <SearchBar/>
       
       <div className={style.createVideogame}>
-        <button>
+        
 
           <Link key='create' to="/crearvideogame">Crear Videojuego</Link>
-        </button>
+        
         </div>
 
         <div className={style.divReset}>
@@ -161,13 +163,11 @@ return (
         />
         </nav> 
         {flagLoad ? (
-        <div>
-        <div className={style.LoaderGifMegaman}>
-          <img src={loader} alt="loaderMegaman.gif" />
-        </div>
+        <div >
         <div className={style.LoaderGif}>
-          <img src={loader} alt="loading.gif" />
+          <img className={style.imagloadtrannohay} src={loader} alt="loader.gif" />
         </div>
+        
       </div>
       ) : (
         <div className={style.parent}>

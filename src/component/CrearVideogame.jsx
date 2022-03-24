@@ -3,8 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import { crearJuego, getGenres, getAllVideoGames } from "../action/index";
 import { useDispatch, useSelector } from "react-redux";
 import style from "../assets/styles/crearjuego.module.css";
+import { DateTime } from "luxon";
+
 
 export default function VideogameCreate() {
+  const hoy = DateTime.now().toISODate()
   const dispatch = useDispatch();
   const history = useHistory();
   const genres = useSelector((state) => state.genres);
@@ -17,43 +20,103 @@ export default function VideogameCreate() {
     platforms = Array.from(new Set(platforms.map((e) => e)));
   }
 
-  const [input, setInput] = useState({
-    name: "",
-    description: "",
-    released: "",
-    rating: "",
+
+ 
+  const [form, setForm] = useState({
+    name: '',
+    description: '',
+    releaseDate: '',
+    rating: 0,
     genres: [],
-    platforms: [],
-  });
+    platforms: []
+});
 
-  
-
-  function handleChange(e) {
+ 
+  const validate = form => {
+    let errors = {};
+    if (!form.name) {
+        errors.name = 'debes especificar un nombre';
+    } else if (form.name.length < 3 ) {
+        errors.name = 'el nombre del juego debe tener al menos 3 caracteres';
+    }
+    if (!form.description) {
+        errors.description = 'debes describir tu videojuego';
+    } else if (form.description.length < 8) {
+        errors.description = 'la descripcion es demaciado corta'
+    }
+    if (!form.rating) {
+        errors.rating = 'debes ranquear tu juego';
+    } else if (!/^[1-5]$/.test(form.rating)) {
+        errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
+    }
+    return errors;
+}
+    const [errors, setErrors] = useState({ form: 'el formulario debe estar completo' });
     
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
+    const handleChange = e => {
+      if (e.target.parentNode.parentNode.id === 'genres') {
+          if (e.target.checked) {
+              setForm(prevState => ({
+                  ...prevState,
+                  genres: form.genres.concat(e.target.value)
+              }))
+          } else {
+              setForm(prevState => ({
+                  ...prevState,
+                  genres: form.genres.filter(x => e.target.value !== x)
+              }))
+          }
+      }
+      if (e.target.parentNode.parentNode.id === 'platforms') {
+          if (e.target.checked) {
+              setForm(prevState => ({
+                  ...prevState,
+                  platforms: form.platforms.concat(e.target.name)
+              }))
+          } else {
+              setForm(prevState => ({
+                  ...prevState,
+                  platforms: form.platforms.filter(x => e.target.name !== x)
+              }))
+          }
+      }
+      if (e.target.type !== 'checkbox') {
+          setForm(prevState => ({
+              ...prevState,
+              [e.target.name]: e.target.value
+          }))
+      }
+      setErrors(validate({
+          ...form,
+          [e.target.name]: e.target.value
+      }))
   }
+
+
   function handleSelectGenres(e) {
-    setInput({
-      ...input,
-      genres: [...input.genres, e.target.value],
+    setForm({
+      ...form,
+      genres: [...form.genres, e.target.value],
     });
   }
   
   function handleSelectPlatforms(e) {
-    setInput({
-      ...input,
-      platforms: [...input.platforms, e.target.value],
+    setForm({
+      ...form,
+      platforms: [...form.platforms, e.target.value],
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(crearJuego(input));
-    alert("Videogame created successfully");
-    setInput({
+    let chequear=[]
+    if (form.genres.length < 1) chequear.push('debes especificar al menos un genero');
+    if (form.platforms.length < 1) chequear.push('debes especificar las plataformas soportadas');
+    if (Object.values(errors).length || chequear.length) { // Object.values --> retorno un array con los values
+      return alert(Object.values(errors).concat(chequear).join('\n'));
+  }
+    dispatch(crearJuego(form));
+    setForm({
       name: "",
       description: "",
       released: "",
@@ -66,39 +129,37 @@ export default function VideogameCreate() {
   }
 
   function handleDeleteGenres(e) {
-    setInput({
-      ...input,
-      genres: input.genres.filter((genre) => genre !== e),
+    setForm({
+      ...form,
+      genres: form.genres.filter((genre) => genre !== e),
     });
   }
   
   function handleDeletePlatforms(e) {
-    setInput({
-      ...input,
-      platforms: input.platforms.filter((platform) => platform !== e),
+    setForm({
+      ...form,
+      platforms: form.platforms.filter((platform) => platform !== e),
     });
   }
 
   useEffect(() => {
     dispatch(getGenres());
+    if(!videogames.length){ dispatch(getAllVideoGames())}
   }, [dispatch]);
   return (
     <div className={style.General}>
-      <Link to="/home" className={style.BackToHomeDiv}>
-        <button className={style.BackToHomeButton}>Back to Home</button>
-      </Link>
       <div className={style.transparentForm}>
         <h1 className={style.title}>Crea un videogame</h1>
-        <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
+        <form id="formCrear" className={style.form} onSubmit={(e) => handleSubmit(e)}>
           <div className={style.nameDiv}>
             <input
               className={style.nameInput}
               placeholder="Name"
               type="text"
-              value={input.name}
+              value={form.name}
               name="name"
               onChange={(e) => handleChange(e)}
-              required
+              
             />
           </div>
           <div className={style.descriptionDiv}>
@@ -106,18 +167,20 @@ export default function VideogameCreate() {
               className={style.descriptionInput}
               type="text"
               placeholder="Description"
-              value={input.description}
+              value={form.description}
               name="description"
+              spellcheck="true"
               onChange={(e) => handleChange(e)}
-              required
+              
             />
           </div>
           <div className={style.dateDiv}>
             <input
               className={style.dateInput}
-              required
               type="Date"
-              value={input.released}
+              min="1952-01-01"
+              max="2022-03-23"
+              value={form.released}
               name="released"
               onChange={(e) => handleChange(e)}
             />
@@ -129,25 +192,25 @@ export default function VideogameCreate() {
               title="Debe ingresar un número entre 1 y 5"
               id="Rating"
               type="number"
-              value={input.rating}
+              value={form.rating}
               min="1"
               max="5"
               name="rating"
               onChange={(e) => handleChange(e)}
-              required
+              
             />
           </div>
 
           <label className={style.labelGenres}>Genres: </label>
           <select
-            required
-            className={style.selectGenres}
+            name="selGenre"
+                        className={style.selectGenres}
             onChange={(e) => handleSelectGenres(e)}
           >
             <option key="empty1"></option>
             {genres.map((genre) => (
               <option key={genre.id} 
-                      required value={genre.name}>
+                      value={genre.name}>
                       
                       {genre.name}
                       
@@ -157,7 +220,7 @@ export default function VideogameCreate() {
 
           <label className={style.labelPlatforms}>Platforms: </label>
           <select
-            required
+            name="selPlat"
             className={style.selectPlatforms}
             onChange={(e) => handleSelectPlatforms(e)}
           >
@@ -173,11 +236,17 @@ export default function VideogameCreate() {
             ))}
           </select>
           <button className={style.buttonDone} type="submit">
-            Done
+            Crear !
+          </button>
+
+          <button  className={style.buttonhome} >
+            <Link to="/home"> 
+            volver a casa
+            </Link>
           </button>
         </form>
         <div className={style.divRenderGenres}>
-          {input.genres.map((e) => (
+          {form.genres.map((e) => (
             <div>
               {e + " "}
               <button
@@ -191,7 +260,7 @@ export default function VideogameCreate() {
           ))}
         </div>
         <div className={style.divRenderPlatforms}>
-          {input.platforms.map((e) => (
+          {form.platforms.map((e) => (
             <div>
               {e + " "}
               <button
