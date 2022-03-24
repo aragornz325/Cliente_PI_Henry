@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filterByOrigin } from "../action";
+import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filtrarorigen } from "../action";
 import Paginador from "./paginador";
 import { Link } from "react-router-dom";
 import loadergif from '../assets/statics/cirulito.gif'
@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar";
 import style from '../assets/styles/home.module.css'
 import loader from '../assets/statics/transp.gif'
 import gameover from '../assets/statics/ASBCM8.gif'
+
 
 
 
@@ -39,12 +40,12 @@ const Home = () => {
     const paginado = (numero) =>{
         setaquiyahora(numero)
     }  
-    function handleFilterByOrigin(e) {
-      dispatch(filterByOrigin(e.target.value));
+    function handlefiltrodeorigen(e) {
+      dispatch(filtrarorigen(e.target.value));
     }
   
     
-    function handleOrdenRating(e){
+    function handleOrdenrating(e){
         e.preventDefault();
         dispatch(ordenrating(e.target.value));
         setaquiyahora(1)
@@ -74,6 +75,8 @@ const Home = () => {
     },[dispatch]);
 
     window.scrollTo(0, 0);
+
+    
 
 return (
   <div className={style.Home}>
@@ -115,7 +118,7 @@ return (
         <div className={style.OrderByRating}>
             <label className={style.labels} > Orden por Rating</label>
             <select className={style.selects}
-                    onChange={(e)=>handleOrdenRating(e)}>
+                    onChange={(e)=>handleOrdenrating(e)}>
                 <option value="SIN">sin filtro (como lanata)</option>
                 <option value="ASCENDENTE">los mejores primeros</option>
                 <option value="DESCENDENTE">los peores primeros</option>
@@ -141,26 +144,31 @@ return (
             <label className={style.labels}>Orden Por Origen </label>
             <select
               className={style.selects}
-              onChange={(e) => handleFilterByOrigin(e)}
+              onChange={(e) => handlefiltrodeorigen(e)}
             >
-              <option value="All" key="all">
-                All
+              <option value="todos" key="all">
+                todos
               </option>
-              <option value="Created" key="Ctd">
-                Videogame Created
+              <option value="db" key="Ctd">
+                Videogames en DB interna
               </option>
               <option value="apiData" key="API">
-                Videogame API
+                Videogames traidos de API
               </option>
             </select>
           </div>
 
         </div>
+        
         <Paginador
+                a={aquiyahora}
+        b={setaquiyahora}
         cantidadJuegos={vistaporpagina}
         allVideogames={videogames.length}
         paginado={paginado}
-        />
+                />
+      
+
         </nav> 
         {flagLoad ? (
         <div >

@@ -107,7 +107,7 @@ function rootReducer (state = initialState, action) {
 
         case ORDENAR_GENEROS:
             const AllVideogames = state.allvideogames;
-      const genresFiltered = action.payload === "All" ? AllVideogames : AllVideogames.filter((game) =>  game.genres.find((genre) => {
+      const genresFiltered = action.payload === "TODOS" ? AllVideogames : AllVideogames.filter((game) =>  game.genres.find((genre) => {
                 return genre.name === action.payload;
                     })
             );
@@ -133,6 +133,20 @@ function rootReducer (state = initialState, action) {
             flagLoad: false,
             };
         
+        case FILTRAR_ORIGEN:
+            const AllVideogames2 = state.allvideogames;
+            const filterByOrigin =
+            action.payload === "db" ?
+           AllVideogames2.filter((e) => e.createdInDb === true)
+          : 
+          AllVideogames2.filter((e) => e.createdInDb === false);
+          return {
+            ...state,
+            videogames:
+              action.payload === "todos" ? state.allvideogames : filterByOrigin,
+          };      
+
+
         default: 
                 return { ...state}
     }

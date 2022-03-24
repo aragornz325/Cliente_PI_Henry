@@ -18,7 +18,7 @@ export function traerpornombre(name) {
         dispatch({
           type: GET_INICIAL
         })
-        let json = await axios.get("http://localhost:3001/api/videogames?name=" + name
+        let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
         );
         dispatch({
           type: TRAER_UNO_NOMBRE,
@@ -33,10 +33,10 @@ export function traerpornombre(name) {
   
 
 
-export function filterByOrigin(payload) {
+export function filtrarorigen(payload) {
     return {
     type: FILTRAR_ORIGEN,
-    payload,
+    payload: payload,
     };
 }
 
@@ -130,7 +130,7 @@ export function crearJuego(payload) {
         return json;
     } catch(error) {
         console.log(error)
-        alert(`el juego no fue creado debido al ${error}`)
+        alert({error})
     }
 }
 }
