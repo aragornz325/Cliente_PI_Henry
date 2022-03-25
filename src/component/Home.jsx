@@ -58,9 +58,11 @@ const Home = () => {
     function handleOrdenGeneros(e){
         e.preventDefault();
         dispatch(ordengeneros(e.target.value))
+        setaquiyahora(1)
     }
     function handleResetsFilters() {
       dispatch(getAllVideoGames());
+      setaquiyahora(1)
     }
     
     
