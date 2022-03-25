@@ -131,18 +131,30 @@ left: 1rem;
 
 .imageDiv {
     position: relative;
-    top: -35px;
+    top: -0.5rem;
     z-index: 2;
+    left: 1rem;
     }
-.imageInput {
-    border-radius: 5px;
-    border: none;
-    width: 300px;
-    height: 20px;
-    margin-bottom: 10px;  
-    text-align-last: center;
-    box-shadow: inset 2px 2px 5px black;
-}
+    .imageInput {
+        border-radius: 5px;
+        border: none;
+        width: 300px;
+        height: 25px;
+        margin-bottom: 10px; 
+        text-align-last: center;
+        box-shadow: inset 2px 2px 5px black;
+    }
+    .imageInput:hover{
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgb(46, 231, 0);
+    }
+
+
+
+
+
+
+
 
 .labelGenres {
 color: white;
@@ -168,7 +180,7 @@ z-index: 2;
     color: rgb(0, 0, 0);
     font-weight: bold;
     position: relative;
-    bottom: 14rem;
+    bottom: 16.5rem;
     left: 27rem;
     border-radius: 5px;
     border: none;
@@ -200,7 +212,7 @@ transition: 0.7s;
     margin-bottom: 10px;  
     text-align-last: center;
     z-index: 2;
-    bottom: 14rem;
+    bottom: 16.5rem;
     box-shadow: 1px 1px 1px rgb(46, 231, 0);
 }
 .selectPlatforms:hover{

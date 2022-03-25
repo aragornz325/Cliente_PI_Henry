@@ -27,6 +27,7 @@ export default function VideogameCreate() {
     description: '',
     releaseDate: '',
     rating: 0,
+    image: undefined,
     genres: [],
     platforms: []
 });
@@ -121,6 +122,7 @@ export default function VideogameCreate() {
       description: "",
       released: "",
       rating: "",
+      image: undefined,
       genres: [],
       platforms: [],
     });
@@ -150,7 +152,9 @@ export default function VideogameCreate() {
     <div className={style.General}>
       <div className={style.transparentForm}>
         <h1 className={style.title}>Crea un videogame</h1>
+        
         <form id="formCrear" className={style.form} onSubmit={(e) => handleSubmit(e)}>
+          
           <div className={style.nameDiv}>
             <input
               className={style.nameInput}
@@ -196,6 +200,20 @@ export default function VideogameCreate() {
               min="1"
               max="5"
               name="rating"
+              onChange={(e) => handleChange(e)}
+              
+            />
+          </div>
+
+          <div className={style.imageDiv}>
+            <input
+              className={style.imageInput}
+              placeholder="Ingresa la URL de tu imagen"
+              title="Debe ingresar una URL valida"
+              id="Image"
+              type="url"
+              value={form.image}
+              name="image"
               onChange={(e) => handleChange(e)}
               
             />

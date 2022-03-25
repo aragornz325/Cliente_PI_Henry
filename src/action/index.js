@@ -121,16 +121,17 @@ export function borrardetalles() {
     }
 }
 
-
 export function crearJuego(payload) {
     return async function () {
     try {
         let json = await axios.post("https://backendhenrypi.herokuapp.com/api/videogame", payload);
         alert('juego creado exitosamente') 
+        console.log(payload)
         return json;
     } catch(error) {
         console.log(error)
-        alert({error})
+        alert(`no se creo, el elemento ya existe, ${error}`)
     }
 }
 }
+

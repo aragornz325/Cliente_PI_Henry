@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {traerdetalles, borrardetalles } from '../action/index'
+import {traerdetalles, borrardetalles, getAllVideoGames } from '../action/index'
 import style from '../assets/styles/detalles.module.css'
+
 
 
 
@@ -14,6 +15,7 @@ console.log(detallado)
 
 const id = props.match.params.id
 
+
 useEffect(()=>{
     if (detallado){dispatch(borrardetalles())}
 }, [dispatch])
@@ -22,6 +24,8 @@ useEffect(() => {
 dispatch(traerdetalles(id));
 }, [dispatch]);
 
+
+
 window.scrollTo(0, 0);
 return (
     <div  id="container">
@@ -29,6 +33,7 @@ return (
         <div className={style.generalDiv} >
          
         <h1 className={style.title} >{detallado.name}</h1>
+        
         <img className={style.onTopImg} src={detallado.image} alt=""/>
         <div className={style.genresDiv}>
             <h2 className={style.genresWords} >
@@ -57,6 +62,8 @@ return (
             Rating: {detallado.rating}
             </h5>
         </div>
+            
+
         <div>
             <img className={style.backgroundBlur} src={detallado.image} alt="BackgroundImage.jpg"/>
         </div>

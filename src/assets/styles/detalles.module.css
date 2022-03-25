@@ -164,6 +164,7 @@
 .loadersGeneral {
   background:black;
   width: 100%;
+  min-height: 35rem;
   height: 100vmax;
   z-index: -2;
 }
@@ -180,4 +181,25 @@
   z-index: 2;
   height: 30rem;
   width: 30rem;
+}
+.divBotDel{
+  position: relative;
+  left: 42rem;
+  bottom: 21rem;
+  z-index: 9999;
+  
+}
+
+.botondelete{
+color: black;
+font-size: 2.5rem;
+width: 3.2rem;
+height: 3.2rem;
+border-radius: 150px;
+background: rgb(255, 0, 0);
+box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+.botondelete:hover{
+transform: scale(1.1);
 }
