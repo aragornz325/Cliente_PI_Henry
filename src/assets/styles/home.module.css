@@ -1,11 +1,12 @@
 
 .parent {
     display: -moz-grid-line;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    align-content: space-around;
+    grid-template-columns: repeat(2, 6fr);
+    grid-template-rows: repeat(2, 6fr);
+    align-content: space-between;
     align-items: center;
-    margin-left: 15px;
+    margin-left: 7rem ;
+    margin-right: 2.5rem;
    
    
 }
@@ -195,4 +196,12 @@ transition: 0.3s;
     border-radius: 5px;
 }
 
-
+.favoritos{
+    
+    
+    top: 3rem;
+    position: relative;
+    
+    background: transparent;
+    padding-bottom: 5rem;
+}

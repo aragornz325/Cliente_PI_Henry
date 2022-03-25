@@ -7,11 +7,14 @@ import { GET_INICIAL,
     ORDENAR_PUNTUACION, 
     TRAER_DETALLES,
     ORDENAR_GENEROS, 
-    BORRAR_DETALLES, } from '../action/constantes.js'
+    BORRAR_DETALLES,
+    SET_FAVORITOS,
+    BORRAR_FAVORITO } from '../action/constantes.js'
 
 let initialState = {
     videogames: [],
     allvideogames: [],
+    favoritos: [],
     genres: [],
     detail: null,
     flagLoad: false
@@ -21,6 +24,20 @@ let initialState = {
 function rootReducer (state = initialState, action) {
 
     switch (action.type) {
+        
+
+        case BORRAR_FAVORITO:
+            return {
+                ...state,
+                favoritos: state.favoritos.filter(games => games.id !== action.payload)
+            }
+
+        case SET_FAVORITOS:
+            return {
+                ...state,
+                favoritos: [...state.favoritos, action.payload] 
+            }
+        
         case GET_INICIAL:
                 return {
                     ...state,

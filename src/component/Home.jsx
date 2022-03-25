@@ -17,22 +17,24 @@ const Home = () => {
     const dispatch = useDispatch();
     const videogames = useSelector((state) => state.videogames);
     const genres = useSelector((state)=>state.genres);
+    const favoritos = useSelector((state)=>state.favoritos)
     
     const flagLoad = useSelector((state) => state.flagLoad);
-    console.log(flagLoad)
+    //console.log(flagLoad)
     
     const [ aquiyahora, setaquiyahora] = useState(1)
     const [orden, setOrden] = useState("")
-    const vistaporpagina = 15;
+    const vistaporpagina = 14;
     
     //console.log(videogames)
     //console.log(genres)
     //console.log(aquiyahora)
+    //console.log('esto es favoritos---->',favoritos)
     
     const mostrarultimo = aquiyahora * vistaporpagina
     const mostrarprimer = mostrarultimo - vistaporpagina
     const juegosenpantalla = videogames.slice(mostrarprimer, mostrarultimo)
-    console.log(juegosenpantalla)
+    //console.log(juegosenpantalla)
     
     const paginado = (numero) =>{
         setaquiyahora(numero)
@@ -174,13 +176,10 @@ return (
       </div>
       ) : (
         <div className={style.parent}>
-          
-          {juegosenpantalla.length ? 
-          
-          (
-            juegosenpantalla.map((e) => {
+          <div className={style.favoritos}>
+          { favoritos ? (
+            favoritos.map((e)=>{
               return (
-                <Link key={e.id} to={"/home/" + e.id}>
                 <Card
                 className
                 image={e.image}
@@ -188,8 +187,36 @@ return (
                 key={e.id}
                 genres={e.genres}
                 rating={e.rating}
+                id={e.id}
+                isList
                 />
-                </Link>
+                
+
+              )
+            }
+            )
+             ):(undefined)}
+            </div>
+
+          
+
+
+          {juegosenpantalla.length ? 
+          
+          (
+            juegosenpantalla.map((e) => {
+              return (
+                // <Link key={e.id} to={"/home/" + e.id}>
+                <Card
+                className
+                image={e.image}
+                name={e.name}
+                key={e.id}
+                genres={e.genres}
+                rating={e.rating}
+                id={e.id}
+                />
+                // </Link>
                 
                 );
               })

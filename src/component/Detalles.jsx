@@ -31,9 +31,9 @@ return (
     <div  id="container">
     {detallado ? (
         <div className={style.generalDiv} >
-         
+         <div className={style.titleDiv}>
         <h1 className={style.title} >{detallado.name}</h1>
-        
+        </div>
         <img className={style.onTopImg} src={detallado.image} alt=""/>
         <div className={style.genresDiv}>
             <h2 className={style.genresWords} >

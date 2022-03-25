@@ -1,4 +1,5 @@
 .card-item {
+    
     border: solid;
     border-color: rgb(33, 141, 0);
     border-radius: 20px;
@@ -8,7 +9,7 @@
     width: 195px;
     height: 250px;
     margin-right: 10px;
-    margin-top: 3.8rem;
+    margin-top: 0.5rem;
     font-size: 20px;
     cursor: pointer;
     transition: 450ms all;
@@ -61,14 +62,38 @@
     width: 10px;
     bottom: 0.1rem;
   }
+  .card-item__imgee{
+    position: absolute;
+    width: 1.3rem;
+    bottom: 5.7rem;
+    z-index: 999;
+  }
+
+  .card-item__imgeee{
+    position: absolute;
+    width: 1.3rem;
+    bottom: 5.7rem;
+    left: 2.4rem;
+    z-index: 999;
+  }
+
+  .card-item__imgeeee{
+    position: absolute;
+    width: 1.3rem;
+    bottom: 5.7rem;
+    left: 2.8rem;
+    z-index: 999;
+  }
   
   .card-item:hover .card-item__details {
     opacity: 2;
   }
   
   .card-item__details--title {
+    position: absolute;
     color: rgb(255, 255, 255);
     margin: 5px 0px 0px 0px;
+    bottom: 2.5rem;
   }
   .card-item__civ{
   position: absolute;
@@ -86,7 +111,7 @@
     font-size: 0.85rem;
     bottom: 6.9rem;
     left: 0.7rem;
-    z-index: 999;
+    z-index: 2;
   }
   .card-item__details--titleee{
     position: relative;
@@ -96,10 +121,18 @@
   }
   
   .card-item__details--subtitle {
+    position: absolute;
     color: rgb(212, 0, 202);
     font-size: 20px;
     margin: 3px 0px;
   }
   .card-item__details-divrat :hover{
     background-color: red;
+  }
+  .btn{
+    z-index: 999;
+    background-color: transparent;
+    cursor: grabbing;
+    width: 1.3rem;
+    height: 1.3rem;
   }

@@ -9,18 +9,20 @@
   position: relative;
   top: 20px;
   width: 500px;
-  left: 150px;
-  background: rgba(0, 0, 0, 0.35);
+  left: 28.2rem;
+  background: rgba(0, 0, 0, 0.466);
   border-radius: 10px;
   box-shadow: 2px 2px 5px (11, 146, 18b);
+  z-index: 2;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgb(0, 129, 0);;
 }
 
 .title {
   position: relative;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 129, 0);
   font-size: 24px;
-  left: 550px;
-  top: 415px;
+  left: 8.8rem;
+  top: 0rem;
   z-index: 999;
 }
 

@@ -8,9 +8,29 @@ import { GET_INICIAL,
  ORDENAR_PUNTUACION, 
  TRAER_DETALLES,
  ORDENAR_GENEROS, 
- BORRAR_DETALLES, } from './constantes.js'
+ BORRAR_DETALLES,
+ SET_FAVORITOS,
+ BORRAR_FAVORITO } from './constantes.js'
 
 //  https://backendhenrypi.herokuapp.com
+
+
+export function borrarfavorito (payload){
+   console.log('payload borrar----->',payload)
+    return{
+        type: BORRAR_FAVORITO,
+        payload: payload
+    }
+}
+
+export function agregarfavoritos (payload){
+    return {
+        type: SET_FAVORITOS,
+        payload: payload,
+        };
+
+
+}
 
 export function traerpornombre(name) {
     return async function (dispatch) {
