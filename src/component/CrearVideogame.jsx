@@ -184,7 +184,7 @@ export default function VideogameCreate() {
               className={style.dateInput}
               type="Date"
               min="1952-01-01"
-              max="2022-03-23"
+              max={hoy}
               value={form.released}
               name="released"
               onChange={(e) => handleChange(e)}
@@ -198,8 +198,8 @@ export default function VideogameCreate() {
               id="Rating"
               type="number"
               value={form.rating}
-              min="1"
-              max="5"
+              min="1,0"
+              max="5,0"
               name="rating"
               onChange={(e) => handleChange(e)}
               
