@@ -13,9 +13,6 @@ import gameover from '../assets/statics/ASBCM8.gif'
 
 
 
-
-
-
 const Home = () => {
     const dispatch = useDispatch();
     const videogames = useSelector((state) => state.videogames);
@@ -41,10 +38,9 @@ const Home = () => {
         setaquiyahora(numero)
     }  
     function handlefiltrodeorigen(e) {
+      setaquiyahora(1)
       dispatch(filtrarorigen(e.target.value));
     }
-  
-    
     function handleOrdenrating(e){
         e.preventDefault();
         dispatch(ordenrating(e.target.value));
@@ -64,6 +60,7 @@ const Home = () => {
     function handleResetsFilters() {
       dispatch(getAllVideoGames());
     }
+    
     
     useEffect(()=>{
         if(!genres.length) {dispatch(getGenres())}
@@ -161,15 +158,13 @@ return (
         </div>
         
         <Paginador
-                a={aquiyahora}
-        b={setaquiyahora}
         cantidadJuegos={vistaporpagina}
         allVideogames={videogames.length}
         paginado={paginado}
                 />
       
-
-        </nav> 
+        </nav
+        > 
         {flagLoad ? (
         <div >
         <div className={style.LoaderGif}>
@@ -179,7 +174,10 @@ return (
       </div>
       ) : (
         <div className={style.parent}>
-          {juegosenpantalla.length ? (
+          
+          {juegosenpantalla.length ? 
+          
+          (
             juegosenpantalla.map((e) => {
               return (
                 <Link key={e.id} to={"/home/" + e.id}>
@@ -189,13 +187,16 @@ return (
                 name={e.name}
                 key={e.id}
                 genres={e.genres}
+                rating={e.rating}
                 />
                 </Link>
                 
-              );
-            })
-          ) : (
-            <div>
+                );
+              })
+              ) 
+              
+              : (
+                <div>
             <div className={style.sadCatGif}>
             <img src={gameover} alt="game over" />
           </div>
@@ -204,11 +205,12 @@ return (
             </div>
             </div>
           )}
+          
         </div>
       )}
-
-    </div>
-)
+      
+      </div>
+      )
 
 }
 

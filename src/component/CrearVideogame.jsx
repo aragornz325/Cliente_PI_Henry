@@ -50,6 +50,7 @@ export default function VideogameCreate() {
     } else if (!/^[1-5]$/.test(form.rating)) {
         errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
     }
+    
     return errors;
 }
     const [errors, setErrors] = useState({ form: 'el formulario debe estar completo' });

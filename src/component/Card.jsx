@@ -2,27 +2,34 @@ import React from 'react'
 import '../assets/styles/card.scss'
 import plusIcon from "../assets/statics/plus-icon.png"
 import playIcon from "../assets/statics/play-icon.png"
+import ratingIcon from "../assets/statics/png-clipart-computer-icons-ranking-miscellaneous-sport.png"
 
-export default function Card ({image, name, genres}) {
+export default function Card ({image, name, genres, rating}) {
 return (
+    
     <div className="card-item">
-
     <img className="card-item__img" src={image} alt={image}  />
     
     <div className="card-item__details">
-      <div>
-        {/* <img className="card-item__details--img" src={playIcon} alt="Play Icon" /> */}
-        <img className="card-item__details--img" src={plusIcon} alt="Plus Icon" />
+      <div className='card-item__civ'>
+      <p className="card-item__details--titleee" >&#11088;</p>
+        <p className="card-item__details--titlee">{rating}</p>
     </div>
     <p className="card-item__details--title">{name}</p>
-    <div className="genres">
+    <div className="card-item__details--subtitle">
             {genres.map((g)=>(
-                <span key={g.id}>{g.name}</span>
-                ))}
+              <span key={g.id}>{g.name}/</span> 
+              ))}
+              
+
     </div>
+    {/* <div className='card-item__details-divrat'>
+    <p className="card-item__details--title">rating {rating}</p>
+    </div> */}
+      
     </div>
 
-</div>
+  </div>
 )}
 
 

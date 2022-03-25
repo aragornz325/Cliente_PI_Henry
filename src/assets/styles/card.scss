@@ -5,7 +5,7 @@
     overflow: hidden;
     position: relative;
     display: inline-block;
-    width: 200px;
+    width: 195px;
     height: 250px;
     margin-right: 10px;
     margin-top: 3.8rem;
@@ -21,7 +21,8 @@
     border: solid;
     border-color: rgb(27, 63, 16);
     transition: 0.9s;
-    transform: scale(1.02);
+    transform: scale(1.1);
+    z-index: 999;
   }
 
   .card-item:hover ~ .card-item {
@@ -38,6 +39,7 @@
   }
   
   .card-item__details {
+    position: absolute;
     align-items: flex-start;
     background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
     bottom: 0;
@@ -55,7 +57,9 @@
   }
   
   .card-item__details--img {
-    width: 20px;
+    position: relative;
+    width: 10px;
+    bottom: 0.1rem;
   }
   
   .card-item:hover .card-item__details {
@@ -63,12 +67,39 @@
   }
   
   .card-item__details--title {
-    color: white;
+    color: rgb(255, 255, 255);
     margin: 5px 0px 0px 0px;
+  }
+  .card-item__civ{
+  position: absolute;
+  background: rgba(51, 255, 0, 0.438);
+  border-radius: 150px;
+  bottom: 12rem;
+  left: 8.7rem;
+  width: 3rem;
+  height: 3rem;
+}
+  .card-item__details--titlee {
+    position: relative;
+    color: rgb(0, 0, 0);
+    margin: 5px 0px 0px 0px;
+    font-size: 0.85rem;
+    bottom: 6.9rem;
+    left: 0.7rem;
+    z-index: 999;
+  }
+  .card-item__details--titleee{
+    position: relative;
+    font-size: 2.3rem;
+    bottom: 2.55rem;
+    right: 0.05rem;
   }
   
   .card-item__details--subtitle {
-    color: rgb(32, 112, 22);
-    font-size: 8px;
+    color: rgb(212, 0, 202);
+    font-size: 20px;
     margin: 3px 0px;
+  }
+  .card-item__details-divrat :hover{
+    background-color: red;
   }
