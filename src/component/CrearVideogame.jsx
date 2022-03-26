@@ -51,6 +51,7 @@ export default function VideogameCreate() {
         errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
     }
     
+    
     return errors;
 }
     const [errors, setErrors] = useState({ form: 'el formulario debe estar completo' });
@@ -96,6 +97,7 @@ export default function VideogameCreate() {
 
 
   function handleSelectGenres(e) {
+    if(e.target.value !=="vacio1" && !form.genres.includes(e.target.value))
     setForm({
       ...form,
       genres: [...form.genres, e.target.value],
@@ -103,6 +105,7 @@ export default function VideogameCreate() {
   }
   
   function handleSelectPlatforms(e) {
+    if(e.target.value !=="vacio2" && !form.platforms.includes(e.target.value))
     setForm({
       ...form,
       platforms: [...form.platforms, e.target.value],
@@ -116,8 +119,10 @@ export default function VideogameCreate() {
     if (form.platforms.length < 1) chequear.push('debes especificar las plataformas soportadas');
     if (Object.values(errors).length || chequear.length) { // Object.values --> retorno un array con los values
       return alert(Object.values(errors).concat(chequear).join('\n'));
-  }
+  } 
+    
     dispatch(crearJuego(form));
+    
     setForm({
       name: "",
       description: "",
@@ -226,7 +231,7 @@ export default function VideogameCreate() {
                         className={style.selectGenres}
             onChange={(e) => handleSelectGenres(e)}
           >
-            <option key="empty1"></option>
+            <option value="vacio1">seleccionar</option>
             {genres.map((genre) => (
               <option key={genre.id} 
                       value={genre.name}>
@@ -243,7 +248,7 @@ export default function VideogameCreate() {
             className={style.selectPlatforms}
             onChange={(e) => handleSelectPlatforms(e)}
           >
-            <option key="empty2"></option>
+            <option value="vacio2">seleccionar</option>
 
             {platforms.map((platform, index) => (
               <option key={index} 
