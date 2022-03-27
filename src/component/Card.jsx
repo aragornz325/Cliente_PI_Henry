@@ -6,23 +6,27 @@ import deleteIcon from "../assets/statics/remove-icon_a56b8107-2c02-49ed-bead-30
 import { useDispatch } from "react-redux";
 import {agregarfavoritos, borrarfavorito} from '../action/index'
 import { Link } from 'react-router-dom'
+//import { DateTime } from 'luxon'
 
 export default function Card ({id,image, name, genres, rating, isList}) {
   const dispatch = useDispatch();
   
-  //console.log(id)
+  //let idLuxon = DateTime.now()
+    //console.log(idLuxon.ts)
+
+  console.log(id)
   const handleSetFavoritos = (e) => {
     dispatch(agregarfavoritos({
-      id,image, name, genres, rating
+      id, image, name, genres, rating
     }))
   }
 
   function handleBorrarFavorito (id)  {
-    console.log('id enviado---->', id)
+    
     dispatch(borrarfavorito(id))
   }
   const handledetalles = (e) => {
-    <Link key={e.id} to={"/home/" + e.id}></Link>
+    <Link key={5*Math.ceil(Math.random()*11532148546)} to={"/home/" + e.id}></Link>
   }
 
   return (
@@ -41,7 +45,8 @@ export default function Card ({id,image, name, genres, rating, isList}) {
     <p className="card-item__details--title">{name}</p>
     <div className="card-item__details--subtitle">
             {genres.map((g)=>(
-              <span >{g.name}/</span> 
+              
+              <span key={1*Math.ceil(Math.random()*11532148546)} >{g.name}/</span> 
               ))}
               
 
@@ -57,7 +62,7 @@ export default function Card ({id,image, name, genres, rating, isList}) {
           className="card-item__imgee" 
           src={plusIcon} 
           alt={plusIcon} />
-    
+  
     <Link key={id} to={"/home/" + id}>
     <img 
          onClick={()=>handledetalles(id)} 

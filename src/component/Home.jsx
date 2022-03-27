@@ -1,11 +1,10 @@
 import React from "react";
 import Card from "./Card";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filtrarorigen } from "../action";
+import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filtrarorigen, setpagina } from "../action";
 import Paginador from "./paginador";
 import { Link } from "react-router-dom";
-import loadergif from '../assets/statics/cirulito.gif'
 import SearchBar from "./SearchBar";
 import style from '../assets/styles/home.module.css'
 import loader from '../assets/statics/transp.gif'
@@ -18,51 +17,52 @@ const Home = () => {
     const videogames = useSelector((state) => state.videogames);
     const genres = useSelector((state)=>state.genres);
     const favoritos = useSelector((state)=>state.favoritos)
+    const pagina = useSelector((state=>state.pagina))
     
     const flagLoad = useSelector((state) => state.flagLoad);
     //console.log(flagLoad)
     
-    const [ aquiyahora, setaquiyahora] = useState(1)
-    const [orden, setOrden] = useState("")
     const vistaporpagina = 14;
     
+    
+
     //console.log(videogames)
     //console.log(genres)
     //console.log(aquiyahora)
     //console.log('esto es favoritos---->',favoritos)
     
-    const mostrarultimo = aquiyahora * vistaporpagina
+    const mostrarultimo = pagina * vistaporpagina
     const mostrarprimer = mostrarultimo - vistaporpagina
     const juegosenpantalla = videogames.slice(mostrarprimer, mostrarultimo)
     //console.log(juegosenpantalla)
     
     const paginado = (numero) =>{
-        setaquiyahora(numero)
+        dispatch(setpagina(numero))
     }  
     function handlefiltrodeorigen(e) {
-      setaquiyahora(1)
+      dispatch(setpagina(1))
       dispatch(filtrarorigen(e.target.value));
     }
     function handleOrdenrating(e){
         e.preventDefault();
         dispatch(ordenrating(e.target.value));
-        setaquiyahora(1)
-        setOrden(e.target.value);}
+        dispatch(setpagina(1))
+        }
     
     function handleOrdenAlfabetico(e){
         e.preventDefault();
         dispatch(ordenalfabetico(e.target.value));
-        setaquiyahora(1);
-        setOrden(e.target.value);}
+        dispatch(setpagina(1));
+        ;}
 
     function handleOrdenGeneros(e){
         e.preventDefault();
         dispatch(ordengeneros(e.target.value))
-        setaquiyahora(1)
+        dispatch(setpagina(1))
     }
     function handleResetsFilters() {
       dispatch(getAllVideoGames());
-      setaquiyahora(1)
+      dispatch(setpagina(1))
     }
     
     
@@ -70,10 +70,8 @@ const Home = () => {
         if(!genres.length) {dispatch(getGenres())}
     });
     useEffect(() => {
-        if (!videogames.length) {
-            dispatch(getAllVideoGames())
-        }
-    },[dispatch]);
+        if (!videogames.length) {dispatch(getAllVideoGames())}
+    });
 
     window.scrollTo(0, 0);
 

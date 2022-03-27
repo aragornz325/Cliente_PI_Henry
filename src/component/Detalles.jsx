@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {traerdetalles, borrardetalles,} from '../action/index'
@@ -18,12 +17,16 @@ const id = props.match.params.id
 
 useEffect(()=>{
     if (detallado){dispatch(borrardetalles())}
-}, [dispatch])
+}, [dispatch, id])
 
 useEffect(() => {
 dispatch(traerdetalles(id));
 }, [dispatch]);
 
+function handlevolver(){
+    window.history.back()
+
+}
 
 
 window.scrollTo(0, 0);
@@ -78,9 +81,10 @@ return (
        </div>
         )}
     <div className={style.goBackDiv} >
-    <Link to="/home">
-        <button className={style.GoBackButton}>Go Back</button>
-    </Link>
+    
+        <button onClick={()=>handlevolver()} 
+        className={style.GoBackButton}>volver</button>
+    
     </div>
     </div>
 );

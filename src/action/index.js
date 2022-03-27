@@ -10,7 +10,8 @@ import { GET_INICIAL,
  ORDENAR_GENEROS, 
  BORRAR_DETALLES,
  SET_FAVORITOS,
- BORRAR_FAVORITO } from './constantes.js'
+ BORRAR_FAVORITO,
+ SET_PAGINA } from './constantes.js'
 
 //  https://backendhenrypi.herokuapp.com
 
@@ -28,8 +29,13 @@ export function agregarfavoritos (payload){
         type: SET_FAVORITOS,
         payload: payload,
         };
+}
 
-
+export function setpagina(payload){
+    return {
+        type:SET_PAGINA,
+        payload:payload
+    }
 }
 
 export function traerpornombre(name) {

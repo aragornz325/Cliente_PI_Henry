@@ -50,8 +50,9 @@ export default function VideogameCreate() {
     } else if (!/^[1-5]$/.test(form.rating)) {
         errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
     }
-    if (!/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.image)) {
-      errors.rating = "debes ingresar una url de una imagen valida";
+    if (!form.image) {return true}
+    else if (!/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.image)) {
+      errors.image = "debes ingresar una url de una imagen valida";
   }
     
 
@@ -177,9 +178,9 @@ export default function VideogameCreate() {
             />
           </div>
           <div className={style.descriptionDiv}>
-            <input
+            <textarea
               className={style.descriptionInput}
-              type="text"
+              type="textarea"
               placeholder="Description"
               value={form.description}
               name="description"
@@ -203,8 +204,9 @@ export default function VideogameCreate() {
             <input
               className={style.ratingInput}
               placeholder="Debe ingresar un número entre 1 y 5"
-              title="Debe ingresar un número entre 1 y 5"
+              title="rating"
               id="Rating"
+              step="any"
               type="number"
               value={form.rating}
               min="1,0"
