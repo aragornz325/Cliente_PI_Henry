@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {traerdetalles, borrardetalles, getAllVideoGames } from '../action/index'
+import {traerdetalles, borrardetalles,} from '../action/index'
 import style from '../assets/styles/detalles.module.css'
 
 
@@ -54,7 +54,7 @@ return (
         </div>
         <div className={style.releasedDiv}>
             <h4 className={style.releasedWords}>
-            Lanzamiento: 
+            Lanzamiento: {detallado.released}
             </h4>
         </div>
         <div className={style.ratingDiv}>

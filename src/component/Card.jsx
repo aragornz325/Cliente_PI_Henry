@@ -41,7 +41,7 @@ export default function Card ({id,image, name, genres, rating, isList}) {
     <p className="card-item__details--title">{name}</p>
     <div className="card-item__details--subtitle">
             {genres.map((g)=>(
-              <span key={g.id}>{g.name}/</span> 
+              <span >{g.name}/</span> 
               ))}
               
 
@@ -51,7 +51,7 @@ export default function Card ({id,image, name, genres, rating, isList}) {
           onClick={(e)=>handleBorrarFavorito(id)}
           className='card-item__imgeee'
           src={deleteIcon}
-    /> :
+    alt="imagen"/> :
     <>
     <img  onClick={(e)=>handleSetFavoritos()} 
           className="card-item__imgee" 
@@ -62,7 +62,9 @@ export default function Card ({id,image, name, genres, rating, isList}) {
     <img 
          onClick={()=>handledetalles(id)} 
          className="card-item__imgeeee"
-         src={playIcon} />
+         src={playIcon} 
+         alt='imagen2'
+         />
     </Link>
      </>
     

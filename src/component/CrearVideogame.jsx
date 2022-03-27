@@ -17,7 +17,7 @@ export default function VideogameCreate() {
     platforms = videogames.map((game) =>
       game.platforms.find((platform) => platform)
     );
-    platforms = Array.from(new Set(platforms.map((e) => e)));
+    platforms = Array.from(new Set(platforms));
   }
 
 
@@ -50,8 +50,12 @@ export default function VideogameCreate() {
     } else if (!/^[1-5]$/.test(form.rating)) {
         errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
     }
+    if (!/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.image)) {
+      errors.rating = "debes ingresar una url de una imagen valida";
+  }
     
-    
+
+    /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.Image)
     return errors;
 }
     const [errors, setErrors] = useState({ form: 'el formulario debe estar completo' });
@@ -152,7 +156,7 @@ export default function VideogameCreate() {
 
   useEffect(() => {
     dispatch(getGenres());
-    if(!videogames.length){ dispatch(getAllVideoGames())}
+    if(videogames.length < 2 ){ dispatch(getAllVideoGames())}
   }, [dispatch]);
   return (
     <div className={style.General}>

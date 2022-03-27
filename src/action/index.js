@@ -38,7 +38,7 @@ export function traerpornombre(name) {
         dispatch({
           type: GET_INICIAL
         })
-        let json = await axios.get("http://localhost:3001/api/videogames?name=" + name
+        let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
         );
         dispatch({
           type: TRAER_UNO_NOMBRE,
@@ -65,7 +65,7 @@ export function getAllVideoGames() {
     return async function (dispatch) {
         dispatch({type: GET_INICIAL})
         try {
-            let data = await axios.get('http://localhost:3001/api/videogames',);
+            let data = await axios.get('https://backendhenrypi.herokuapp.com/api/videogames',);
             dispatch({
                 type: TRAER_TODOS,
                 payload: data.data,
@@ -83,7 +83,7 @@ export function getGenres() {
     return async function (dispatch){
         
        try {
-            let datagen = await axios.get(`http://localhost:3001/api/genres`);
+            let datagen = await axios.get(`https://backendhenrypi.herokuapp.com/api/genres`);
             //console.log(datagen.data)
             dispatch({
                 type: TRAER_GENEROS,
@@ -122,7 +122,7 @@ export function ordengeneros(payload){
 export function traerdetalles(id) {
     return async function (dispatch) {
     try {
-        let json = await axios.get("http://localhost:3001/api/videogame/" + id);
+        let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogame/" + id);
         dispatch({
         type: TRAER_DETALLES,
         payload: json.data
@@ -144,7 +144,7 @@ export function borrardetalles() {
 export function crearJuego(payload) {
     return async function () {
     try {
-        let json = await axios.post("http://localhost:3001/api/videogame", payload);
+        let json = await axios.post("https://backendhenrypi.herokuapp.com/api/videogame", payload);
         alert('juego creado exitosamente') 
         console.log(payload)
         return json;
