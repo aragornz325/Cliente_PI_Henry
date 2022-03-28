@@ -5,6 +5,7 @@ import Home from "./component/Home";
 import CreaVideogame from "./component/CrearVideogame.jsx"
 import Detalles from "./component/Detalles";
 import Landing from "./component/Landing";
+import NotFound from "./component/NotFound";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/home' component={Home} />
         <Route exact path='/crearvideogame' component={CreaVideogame} />
         <Route path='/home/:id' component={Detalles}/> 
+        <Route component={NotFound} />
         
         
 

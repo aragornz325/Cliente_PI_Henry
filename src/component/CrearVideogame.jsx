@@ -184,7 +184,7 @@ export default function VideogameCreate() {
               placeholder="Description"
               value={form.description}
               name="description"
-              spellcheck="true"
+              spellCheck="true"
               onChange={(e) => handleChange(e)}
               
             />
