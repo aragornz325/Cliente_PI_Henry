@@ -116,7 +116,7 @@ const handleChange = (e) => {
               
             />
           </div>
-          <div className="descriptionDiv">
+          <div className="descriptioDiv">
             <textarea
               className="descriptionInput"
               type="textarea"
@@ -139,9 +139,9 @@ const handleChange = (e) => {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <div className="ratingDiv">
+          <div className="ratinDiv">
             <input
-              className="ratingInput"
+              className="ratinInput"
               placeholder="Debe ingresar un número entre 1 y 5"
               title="rating"
               id="Rating"
