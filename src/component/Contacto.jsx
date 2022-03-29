@@ -59,6 +59,7 @@ history.push("/home");
         <div className="divform">
         <form  className='forma' onSubmit={(e)=>handleSubmit(e)} 
         id='formContacto' action="">
+        <label>Nombre</label>
         <input  
                 placeholder='ingresa tu nombre'
                 type="text"
@@ -66,6 +67,7 @@ history.push("/home");
                 value={input.name}
                 onChange={(e)=>handleChange(e)}
                 />
+        <label>Apellido</label>
         <input  
                 placeholder='ingresa tu apellido'
                 type="text"
@@ -73,6 +75,7 @@ history.push("/home");
                 value={input.apellido}
                 onChange={(e)=>handleChange(e)}
                 />
+        <label>Tu Email</label>
         <input 
                 placeholder='ingresa tu mail'
                 type="text"
@@ -80,14 +83,16 @@ history.push("/home");
                 value={input.email}
                 onChange={(e)=>handleChange(e)}
                 />
+        <label>Asunto</label>
         <input 
                 type="text"
                 name="direpost"
                 value={input.direpost}
-                placeholder="direccion postal"
+                placeholder="asunto"
                 onChange={(e)=>handleChange(e)}
                 />
 
+        <label>Tu mensaje</label>
         <textarea
                 type="textarea"
                 value={input.mensaje}

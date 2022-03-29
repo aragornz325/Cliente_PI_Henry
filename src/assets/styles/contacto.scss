@@ -11,6 +11,7 @@
 }
 
 .titulo{
+  
 display: flex;
 align-items: center;
 justify-content: center;
@@ -18,6 +19,7 @@ z-index: 2;
 color: aliceblue;
 }
 .h1titulo{
+  
     text-decoration-line: underline;
     
 }
@@ -26,7 +28,7 @@ color: aliceblue;
     display: flex;
   position: relative; 
   left: 2.9rem; 
-    
+  top: -2rem;
 
 }
 
@@ -76,10 +78,13 @@ color: aliceblue;
     border-color: brown;
     padding: 0.5em 1em;
     border: solid;
-    top: 34rem;
+    top: 37rem;
     background: rgb(0, 0, 0);
     color: aliceblue;
     cursor: pointer;
     height: 3rem;
     right: 9.7rem;
+  }
+  .forma label{
+    color: white;
   }
