@@ -1,0 +1,85 @@
+.contGener{
+    background-image: url('../statics/fond2.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 44.6rem;
+}
+
+.titulo{
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 2;
+color: aliceblue;
+}
+.h1titulo{
+    text-decoration-line: underline;
+    
+}
+
+.divform{
+    display: flex;
+  position: relative; 
+  left: 2.9rem; 
+    
+
+}
+
+.forma{
+  width: 100%;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 37.5rem;
+  
+}
+
+.forma input {
+    border: solid;
+    width: 90%;
+    height: 30px;
+    margin: 0.5rem;
+    background-color: rgba(240, 248, 255, 0.637);
+  }
+
+  .forma textarea {
+    border: solid;
+    width: 130%;
+    height: 180px;
+    margin: 0.5rem;
+    background-color: rgba(240, 248, 255, 0.637);
+  }
+
+  .botonsub {
+    border-radius: 100px;
+    padding: 0.5em 1em;
+    border: none;
+    background: rgb(58, 235, 88);
+    cursor: pointer;
+  }
+
+  .forma button:hover{
+    transform: scale(1.1);
+  }
+  .backhome {
+    position: relative;
+    border-radius: 100px;
+    border-color: brown;
+    padding: 0.5em 1em;
+    border: solid;
+    top: 34rem;
+    background: rgb(0, 0, 0);
+    color: aliceblue;
+    cursor: pointer;
+    height: 3rem;
+    right: 9.7rem;
+  }

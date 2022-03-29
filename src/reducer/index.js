@@ -30,25 +30,26 @@ function rootReducer (state = initialState, action) {
             return {
                 ...state,
                 pagina: action.payload
-            }
+            };
 
         case BORRAR_FAVORITO:
             return {
                 ...state,
                 favoritos: state.favoritos.filter(games => games.id !== action.payload)
-            }
+            };
 
         case SET_FAVORITOS:
             return {
                 ...state,
                 favoritos: [...state.favoritos, action.payload] 
-            }
+            };
         
         case GET_INICIAL:
                 return {
                     ...state,
                     flagLoad:true
-                }
+                };
+        
         case TRAER_TODOS:
                 return {
                     ...state,
@@ -144,11 +145,13 @@ function rootReducer (state = initialState, action) {
         ...state,
         detail: action.payload,
                 };
+        
         case BORRAR_DETALLES:
             return {
             ...state,
             detail: null,
                     };
+        
         case TRAER_UNO_NOMBRE:
             return {
             ...state,
@@ -168,7 +171,6 @@ function rootReducer (state = initialState, action) {
             videogames:
               action.payload === "todos" ? state.allvideogames : filterByOrigin,
           };      
-
 
         default: 
                 return { ...state}

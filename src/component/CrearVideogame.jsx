@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { crearJuego, getGenres, getAllVideoGames } from "../action/index";
 import { useDispatch, useSelector } from "react-redux";
-import style from "../assets/styles/crearjuego.module.css";
+import "../assets/styles/crearjuego.scss";
 import { DateTime } from "luxon";
+import {validador} from '../auxiliares/validador'
+
 
 
 export default function VideogameCreate() {
@@ -32,74 +34,12 @@ export default function VideogameCreate() {
     platforms: []
 });
 
- 
-  const validate = form => {
-    let errors = {};
-    if (!form.name) {
-        errors.name = 'debes especificar un nombre';
-    } else if (form.name.length < 3 ) {
-        errors.name = 'el nombre del juego debe tener al menos 3 caracteres';
-    }
-    if (!form.description) {
-        errors.description = 'debes describir tu videojuego';
-    } else if (form.description.length < 8) {
-        errors.description = 'la descripcion es demaciado corta'
-    }
-    if (!form.rating) {
-        errors.rating = 'debes ranquear tu juego';
-    } else if (!/^[1-5]$/.test(form.rating)) {
-        errors.rating = 'el rating debe ser un numero entre el 1 y el 5';
-    }
-    if (!form.image) {return true}
-    else if (!/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.image)) {
-      errors.image = "debes ingresar una url de una imagen valida";
-  }
-    
-
-    /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)(jpg)\/?/gm.test(form.Image)
-    return errors;
+const handleChange = (e) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value,
+  });
 }
-    const [errors, setErrors] = useState({ form: 'el formulario debe estar completo' });
-    
-    const handleChange = e => {
-      if (e.target.parentNode.parentNode.id === 'genres') {
-          if (e.target.checked) {
-              setForm(prevState => ({
-                  ...prevState,
-                  genres: form.genres.concat(e.target.value)
-              }))
-          } else {
-              setForm(prevState => ({
-                  ...prevState,
-                  genres: form.genres.filter(x => e.target.value !== x)
-              }))
-          }
-      }
-      if (e.target.parentNode.parentNode.id === 'platforms') {
-          if (e.target.checked) {
-              setForm(prevState => ({
-                  ...prevState,
-                  platforms: form.platforms.concat(e.target.name)
-              }))
-          } else {
-              setForm(prevState => ({
-                  ...prevState,
-                  platforms: form.platforms.filter(x => e.target.name !== x)
-              }))
-          }
-      }
-      if (e.target.type !== 'checkbox') {
-          setForm(prevState => ({
-              ...prevState,
-              [e.target.name]: e.target.value
-          }))
-      }
-      setErrors(validate({
-          ...form,
-          [e.target.name]: e.target.value
-      }))
-  }
-
 
   function handleSelectGenres(e) {
     if(e.target.value !=="vacio1" && !form.genres.includes(e.target.value))
@@ -120,11 +60,10 @@ export default function VideogameCreate() {
   function handleSubmit(e) {
     e.preventDefault();
     let chequear=[]
-    if (form.genres.length < 1) chequear.push('debes especificar al menos un genero');
-    if (form.platforms.length < 1) chequear.push('debes especificar las plataformas soportadas');
-    if (Object.values(errors).length || chequear.length) { // Object.values --> retorno un array con los values
-      return alert(Object.values(errors).concat(chequear).join('\n'));
-  } 
+   validador(form, chequear)
+    if (chequear.length>=1) {
+      return alert((chequear.join('\n')));
+  } else {chequear.push(null)}
     
     dispatch(crearJuego(form));
     
@@ -160,15 +99,15 @@ export default function VideogameCreate() {
     if(videogames.length < 2 ){ dispatch(getAllVideoGames())}
   }, [dispatch]);
   return (
-    <div className={style.General}>
-      <div className={style.transparentForm}>
-        <h1 className={style.title}>Crea un videogame</h1>
+    <div className="General">
+      <div className="transparentForm">
+        <h1 className="title">Crea un videogame</h1>
         
-        <form id="formCrear" className={style.form} onSubmit={(e) => handleSubmit(e)}>
+        <form id="formCrear" className="form" onSubmit={(e) => handleSubmit(e)}>
           
-          <div className={style.nameDiv}>
+          <div className="nameDiv">
             <input
-              className={style.nameInput}
+              className="nameInput"
               placeholder="Name"
               type="text"
               value={form.name}
@@ -177,21 +116,21 @@ export default function VideogameCreate() {
               
             />
           </div>
-          <div className={style.descriptionDiv}>
+          <div className="descriptionDiv">
             <textarea
-              className={style.descriptionInput}
+              className="descriptionInput"
               type="textarea"
               placeholder="Description"
               value={form.description}
               name="description"
-              spellCheck="true"
+              spellcheck="true"
               onChange={(e) => handleChange(e)}
               
             />
           </div>
-          <div className={style.dateDiv}>
+          <div className="dateDiv">
             <input
-              className={style.dateInput}
+              className="dateInput"
               type="Date"
               min="1952-01-01"
               max={hoy}
@@ -200,9 +139,9 @@ export default function VideogameCreate() {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <div className={style.ratingDiv}>
+          <div className="ratingDiv">
             <input
-              className={style.ratingInput}
+              className="ratingInput"
               placeholder="Debe ingresar un número entre 1 y 5"
               title="rating"
               id="Rating"
@@ -217,9 +156,9 @@ export default function VideogameCreate() {
             />
           </div>
 
-          <div className={style.imageDiv}>
+          <div className="imageDiv">
             <input
-              className={style.imageInput}
+              className="imageInput"
               placeholder="Ingresa la URL de tu imagen"
               title="Debe ingresar una URL valida"
               id="Image"
@@ -231,10 +170,10 @@ export default function VideogameCreate() {
             />
           </div>
 
-          <label className={style.labelGenres}>Genres: </label>
+          <label className="labelGenres">Genres: </label>
           <select
             name="selGenre"
-                        className={style.selectGenres}
+                        className="selectGenres"
             onChange={(e) => handleSelectGenres(e)}
           >
             <option value="vacio1">seleccionar</option>
@@ -248,10 +187,10 @@ export default function VideogameCreate() {
             ))}
           </select>
 
-          <label className={style.labelPlatforms}>Platforms: </label>
+          <label className="labelPlatforms">Platforms: </label>
           <select
             name="selPlat"
-            className={style.selectPlatforms}
+            className="selectPlatforms"
             onChange={(e) => handleSelectPlatforms(e)}
           >
             <option value="vacio2">seleccionar</option>
@@ -265,23 +204,23 @@ export default function VideogameCreate() {
               </option>
             ))}
           </select>
-          <button className={style.buttonDone} type="submit">
+          <button className="buttonDone" type="submit">
             Crear !
           </button>
 
-          <button  className={style.buttonhome} >
+          <button  className="buttonhome" >
             <Link to="/home"> 
             volver a casa
             </Link>
           </button>
         </form>
-        <div className={style.divRenderGenres}>
+        <div className="divRenderGenres">
           {form.genres.map((e) => (
             <div>
               {e + " "}
               <button
                 key="btnXgenres"
-                className={style.buttonXgenres}
+                className="buttonXgenres"
                 onClick={() => handleDeleteGenres(e)}
               >
                 x
@@ -289,13 +228,13 @@ export default function VideogameCreate() {
             </div>
           ))}
         </div>
-        <div className={style.divRenderPlatforms}>
+        <div className="divRenderPlatforms">
           {form.platforms.map((e) => (
             <div>
               {e + " "}
               <button
                 key="btnXPlatforms"
-                className={style.buttonXplatforms}
+                className="buttonXplatforms"
                 onClick={() => handleDeletePlatforms(e)}
               >
                 x
@@ -306,6 +245,7 @@ export default function VideogameCreate() {
         </div>
 
       </div>
+      
     </div>
   );
 }

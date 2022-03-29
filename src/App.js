@@ -7,6 +7,7 @@ import Detalles from "./component/Detalles";
 import Landing from "./component/Landing";
 import NotFound from "./component/NotFound";
 
+import Contacto from "./component/Contacto"
 
 function App() {
   return (
@@ -14,13 +15,14 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Landing} />
+
+        
         <Route exact path='/home' component={Home} />
         <Route exact path='/crearvideogame' component={CreaVideogame} />
+        <Route exact path='/contacto' component={Contacto} />
         <Route path='/home/:id' component={Detalles}/> 
         <Route component={NotFound} />
         
-        
-
         
       </Switch>
     

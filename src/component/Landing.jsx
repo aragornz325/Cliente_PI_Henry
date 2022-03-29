@@ -3,7 +3,9 @@ import { useEffect, } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideoGames, getGenres } from "../action";
 import { Link } from "react-router-dom";
-import style from '../assets/styles/landing.module.css'
+import  '../assets/styles/landing.scss'
+import cargando from '../assets/statics/7pld.gif'
+import gifloader from '../assets/statics/SomberOfficialHoiho-size_restricted.gif'
 
 
 
@@ -23,19 +25,24 @@ useEffect(() => {
 });
 
   return (
-    <div>
-        {videogames.length < 5 ? (
-        <div className={style.landing}>
-     <div className={style.conectStart}>.</div>
-    </div>):(<div className={style.landing}>
+    <div >
+        {videogames.length < 1 ? (
+        <div className="landing">
+          <img className="cargando" src={cargando} alt="gif cargando" />
+          <img className="pantallaso" src={gifloader} alt="" />
+     <div className="conectStart">.</div>
+    </div>):(<div className="landing">
+    <div className="landing">
+          <img className="pantallaso2" src={gifloader} alt="" />
       <Link to='/home'>
-     <button className={style.ButtonStart}>
+     <button className="ButtonStart">
              Start
          </button>
-
-         
      </Link>
-    </div>)}
+     </div>     
+     <div className="conectStart">.</div>
+          </div>
+    )}
 
 
 

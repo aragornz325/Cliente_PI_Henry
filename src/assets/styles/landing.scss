@@ -1,0 +1,89 @@
+.landing {
+    background-color: black;
+    width: 100%vh;
+    height: 100%vh;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .ButtonStart {
+    position: relative;
+    top: -30rem;
+    left: 630px;
+    width: 300px;
+    letter-spacing: 2px;
+    font-size: 48px;
+    font-family: monospace;
+    font-weight: 700;
+    text-decoration-line: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 235, 235);
+    border-color: rgb(192, 17, 148);
+    transition: 0.3s;
+    border-radius: 120px;
+    
+   
+    
+  }
+
+  .ButtonStart::before{
+    position: relative;
+    top: 5px;
+    left: 630px;
+    width: 300px;
+    letter-spacing: 2px;
+    font-size: 48px;
+    font-family: monospace;
+    font-weight: 700;
+    text-decoration-line: none;
+    background-color: rgb(255, 0, 0);
+    color: rgb(8, 116, 24);
+    border-color: rgb(17, 84, 192);
+    transition: 2s;
+    border-radius: 120px;
+    
+    
+    
+  }
+  
+
+  
+  .conectStart{
+    z-index: 999;
+    background-image: url('../statics/conectando.gif');
+
+  }
+
+
+  .ButtonStart:hover {
+    background-color: rgb(11, 129, 0);
+    box-shadow: 0 0 3px rgb(11, 233, 3), 0 0 6px rgb(11, 233, 3),
+      0 0 15px rgb(11, 233, 3), 0 0 30px rgb(11, 233, 3);
+    cursor: pointer;
+  }
+  
+  .cargando{
+    position: relative;
+    width: 15rem;
+    height: 10rem;
+    top: 30rem;
+    left: 40rem;
+    z-index: 2;
+    
+    
+  }
+  .pantallaso{
+    position: relative;
+    bottom: 24rem;
+    right: 9rem;
+  }
+  .contenedorpre{
+    display: flex;
+  }
+  .pantallaso2{
+    position: relative;
+    bottom: 13rem;
+    right: 9rem;
+  }

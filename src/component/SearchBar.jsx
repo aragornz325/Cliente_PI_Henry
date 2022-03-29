@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { traerpornombre } from "../action/index";
-import style from '../assets/styles/serchbar.module.css'
+import '../assets/styles/serchbar.scss'
 
 export default function SearchBar() {
  const dispatch = useDispatch()
@@ -18,17 +18,17 @@ export default function SearchBar() {
         setName('')
     } 
  return (
-     <div className={style.GeneralSearch}>
+     <div className="GeneralSearch">
          <form onSubmit={handleSubmit} autoComplete="off">
          <input 
-         className={style.SearchInput}
+         className="SearchInput"
          type="text" 
          name='search'
          id='Search'
          value={name}
          placeholder=''
          onChange={handleInputChange}/>
-         <button className={style.buttonSearch}>Search</button>
+         <button className="buttonSearch">Search</button>
          </form>
      </div>
  )

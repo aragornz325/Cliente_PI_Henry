@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import Card from "./Card";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,9 +6,10 @@ import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros
 import Paginador from "./paginador";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import style from '../assets/styles/home.module.css'
+import '../assets/styles/home.scss'
 import loader from '../assets/statics/transp.gif'
 import gameover from '../assets/statics/ASBCM8.gif'
+import Footer from '../component/Footer'
 
 
 
@@ -61,76 +62,83 @@ const Home = () => {
         dispatch(setpagina(1))
     }
     function handleResetsFilters() {
-      dispatch(getAllVideoGames());
-      dispatch(setpagina(1))
+    window.location.reload();
+    // dispatch(getAllVideoGames());
+    // dispatch(setpagina(1))
+
     }
     
-    
+      
     useEffect(()=>{
         if(!genres.length) {dispatch(getGenres())}
-    });
+    }, [dispatch]);
     useEffect(() => {
         if (!videogames.length) {dispatch(getAllVideoGames())}
-    });
+    }, [dispatch]);
 
     window.scrollTo(0, 0);
 
     
 
 return (
-  <div className={style.Home}>
-    <nav className={style.nav}>
+  <div className="Home">
+    <nav className="nav">
       <SearchBar/>
       
-      <div className={style.createVideogame}>
-        
+      <div className="createVideogame">
+        <Link key='create' to="/crearvideogame">Crear Videojuego</Link>
+      </div>
 
-          <Link key='create' to="/crearvideogame">Crear Videojuego</Link>
-        
-        </div>
+      <div className="createVideogame2">
+        <Link key='contacto' to="/contacto">contacto</Link>
+      </div>
 
-        <div className={style.divReset}>
-            <button className={style.buttonReset} onClick={e => handleResetsFilters(e)}>
-              limpiar busqueda
+        <div className="divReset">
+            <button id="reset" className="buttonReset" onClick={e => handleResetsFilters(e)}>
+            limpiar busqueda
             </button>
         
         </div>
 
        
    
-    <div className={style.filtersCss}>
+    <div className="filtersCss">
 
-        <div className={style.alphabeticalOrder}>
+        <div className="alphabeticalOrder">
                 
-                <label className={style.labels}>Orden Alfabetico</label>
+                <label className="labels">Orden Alfabetico</label>
             
-            <select
-                className={style.selects}
+            <select id="filteralfa"
+                className="selects"
                 onChange={(e)=>handleOrdenAlfabetico(e)} >
                 
-                <option value="SIN">sin filtro (como lanata)</option>
+                <option  value="SIN">sin filtro</option>
                 <option value="ASCENDENTE"> de la A a la Z</option>
                 <option value="DESCENDENTE">de la Z a la A</option>
             </select>
         </div>
 
-        <div className={style.OrderByRating}>
-            <label className={style.labels} > Orden por Rating</label>
-            <select className={style.selects}
+        <div className="OrderByRating">
+            
+            <label className="labels" > Orden por Rating</label>
+           
+            <select id="filterRating"
+            className="selects"
                     onChange={(e)=>handleOrdenrating(e)}>
-                <option value="SIN">sin filtro (como lanata)</option>
+                <option value="SIN">sin filtro</option>
                 <option value="ASCENDENTE">los mejores primeros</option>
                 <option value="DESCENDENTE">los peores primeros</option>
             </select>
         </div>
 
-        <div className={style.filterByGenres}>
-            <label className={style.labels} >Orden por Genero</label>
+        <div className="filterByGenres">
+            <label className="labels" >Orden por Genero</label>
             <select 
-                className={style.selects}
+                id="my_select"
+                className="selects"
                 onChange={(e)=>handleOrdenGeneros(e)}>
                   
-                <option value="TODOS">Todos</option>
+                <option  value="TODOS">Todos</option>
                 {genres.map((genero)=>(
                     <option key={genero.id}
                       required value={genero.name} >
@@ -139,10 +147,10 @@ return (
                       ))}
             </select>
             </div>
-            <div className={style.filterByOrigin}>
-            <label className={style.labels}>Orden Por Origen </label>
+            <div className="filterByOrigin">
+            <label className="labels">Orden Por Origen </label>
             <select
-              className={style.selects}
+              className="selects"
               onChange={(e) => handlefiltrodeorigen(e)}
             >
               <option value="todos" key="all">
@@ -169,14 +177,14 @@ return (
         > 
         {flagLoad ? (
         <div >
-        <div className={style.LoaderGif}>
-          <img className={style.imagloadtrannohay} src={loader} alt="loader.gif" />
+        <div className="LoaderGi">
+          <img className="imagloadtrannohay" src={loader} alt="loader.gif" />
         </div>
         
       </div>
       ) : (
-        <div className={style.parent}>
-          <div className={style.favoritos}>
+        <div className="parent">
+          <div className="favoritos">
           { favoritos ? (
             favoritos.map((e)=>{
               return (
@@ -208,7 +216,6 @@ return (
               return (
                 // <Link key={e.id} to={"/home/" + e.id}>
                 <Card
-                className
                 image={e.image}
                 name={e.name}
                 key={e.id}
@@ -224,10 +231,10 @@ return (
               
               : (
                 <div>
-            <div className={style.sadCatGif}>
+            <div className="gameover">
             <img src={gameover} alt="game over" />
           </div>
-            <div className={style.noResultsDiv}>
+            <div className="noResultsDiv">
               <h3>aqui no hay nada, juego terminado!... vuelve al inicio</h3>
             </div>
             </div>
@@ -236,9 +243,10 @@ return (
         </div>
       )}
       
+                
+                
       </div>
       )
-
 }
 
 export default Home

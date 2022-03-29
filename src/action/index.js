@@ -40,23 +40,23 @@ export function setpagina(payload){
 
 export function traerpornombre(name) {
     return async function (dispatch) {
-      try {
+        try {
         dispatch({
-          type: GET_INICIAL
+            type: GET_INICIAL
         })
         let json = await axios.get("https://backendhenrypi.herokuapp.com/api/videogames?name=" + name
         );
         dispatch({
-          type: TRAER_UNO_NOMBRE,
-          payload: json.data,
+            type: TRAER_UNO_NOMBRE,
+            payload: json.data,
         });
-      } catch (error) {
+        } catch (error) {
         alert(`no se puede completar debido al ${error}`)
         console.log(error);
-      }
+        }
     };
-  }
-  
+}
+
 
 
 export function filtrarorigen(payload) {
@@ -85,18 +85,17 @@ export function getAllVideoGames() {
     }
 }
 
+
 export function getGenres() {
     return async function (dispatch){
         
-       try {
+        try {
             let datagen = await axios.get(`https://backendhenrypi.herokuapp.com/api/genres`);
-            //console.log(datagen.data)
             dispatch({
                 type: TRAER_GENEROS,
                 payload: datagen.data
             })
-            //alert(`se cargo ${datagen.data}`)
-        } catch(error) {
+            } catch(error) {
             alert(`no se puede trar los generos debido al ${error}`)
             console.log(error)
         }
@@ -161,3 +160,16 @@ export function crearJuego(payload) {
 }
 }
 
+export function crearcontacto(payload) {
+    return async function () {
+    try {
+        let json = await axios.post("https://backendhenrypi.herokuapp.com/api/contacto", payload);
+        alert('recibimos su mensaje') 
+        console.log(payload)
+        return json;
+    } catch(error) {
+        console.log(error)
+        alert(`no pudimos enviar su mensaje, ${error}`)
+    }
+}
+}

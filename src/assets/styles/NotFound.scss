@@ -1,13 +1,20 @@
 .general{
     display: flex;
-    background-color: black;
-    background-image: url();
+    background-color: rgba(0, 0, 0, 0);
+   z-index: -9999;
     min-height: 43rem;
     
 }
 
 .gif404{
     position: relative;
-    left: 35rem;
+    left: 30rem;
+    z-index: -1;
+}
 
+.divimag{
+    background-color: black;
+    min-height: 43rem;
+    z-index: -2;
+    width: 100%;
 }
