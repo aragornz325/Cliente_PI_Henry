@@ -102,11 +102,7 @@ const handleChange = (e) => {
     <div className="General">
       <div className="transparentForm">
         <h1 className="title">Crea un videogame</h1>
-        <button  className="buttonhoome" >
-            <Link to="/home"> 
-            volver a casa
-            </Link>
-          </button>
+        
         <form id="formCrear" className="form" onSubmit={(e) => handleSubmit(e)}>
           
           <div className="nameDiv">
@@ -242,7 +238,11 @@ const handleChange = (e) => {
           
             </div>
           ))}
-      
+      <button  className="buttonhoome" >
+            <Link to="/home"> 
+            volver a casa
+            </Link>
+          </button>
         </div>
       </div>
       
