@@ -102,7 +102,11 @@ const handleChange = (e) => {
     <div className="General">
       <div className="transparentForm">
         <h1 className="title">Crea un videogame</h1>
-        
+        <button  className="buttonhoome" >
+            <Link to="/home"> 
+            volver a casa
+            </Link>
+          </button>
         <form id="formCrear" className="form" onSubmit={(e) => handleSubmit(e)}>
           
           <div className="nameDiv">
@@ -208,11 +212,7 @@ const handleChange = (e) => {
             Crear !
           </button>
 
-          <button  className="buttonhome" >
-            <Link to="/home"> 
-            volver a casa
-            </Link>
-          </button>
+          
         </form>
         <div className="divRenderGenres">
           {form.genres.map((e) => (
@@ -242,8 +242,8 @@ const handleChange = (e) => {
           
             </div>
           ))}
+      
         </div>
-
       </div>
       
     </div>

@@ -22,37 +22,38 @@
 .title{
     width: 45rem;
     text-shadow: 5px 5px 5px rgba(0, 192, 16, 0.746);
+    
 }
 
 .transparentForm{
     display: flex;
     position: relative;
-    background-color: rgba(0, 0, 0, 0.274);
     width: 40rem;
     height: 35rem;
     top: 5rem;
     border-radius: 3rem;
     border: solid;
     background-color: rgba(80, 95, 235, 0.459);
+    z-index: 0;
 }
 
-.buttonhome{
+.buttonhoome{
     text-decoration: none;
     position: relative;
-    right: 6rem;
-    top: 9rem;
-    width: 100px;
-    height: 50px;
+    left: 6rem;
+    top: 35.5rem;
+    width: 9rem;
+    height: 4rem;
     padding: 8px;
     border-radius: 20px;
     border-style:none;
     font-size: 15px;
     color:rgb(0, 0, 0);
     font-weight: 700;
-    background-color: rgba(233, 60, 233, 0.561);
+    background-color: rgba(236, 33, 60, 0.561);
     box-shadow: 5px 5px 5px black;
 }
-.buttonhome:hover {
+.buttonhoome:hover {
     background-color: rgb(0, 0, 0);
     color: rgb(46, 231, 0);
     box-shadow: 5px 5px 5px rgb(46, 231, 0);
@@ -61,7 +62,7 @@
 .buttonDone{
     position: relative;
     left: 12rem;
-    top: 12rem;
+    top: 11rem;
     width: 100px;
     padding: 15px;
     border-radius: 20px;
@@ -82,8 +83,8 @@
 .nameDiv{
     position: relative;
     
-    right: 12.5rem;
-    top: 1rem;
+    right: 15.5rem;
+    top: 4rem;
 }
 .nameInput:hover{
     cursor: pointer;
@@ -102,8 +103,8 @@
     
     position: relative;
     background-color: rgba(165, 42, 42, 0.479);
-    right: 12.5rem;
-    top: 1.5rem;
+    right: 15.5rem;
+    top: 4.5rem;
     width: 12rem;
     height: 30rem;
 }
@@ -124,7 +125,7 @@
 .dateDiv{
     position: relative;
    
-    right: 12.5rem;
+    right: 15.5rem;
     top: 11rem;
 }
 .dateInput{
@@ -143,7 +144,7 @@
 .ratinDiv{
     position: relative;
     
-    right: 12.5rem;
+    right: 15.5rem;
     top: 10.7rem;
 }
 .ratinInput{
@@ -162,7 +163,7 @@
 .imageDiv{
     position: relative;
     
-    right: 12.5rem;
+    right: 15.5rem;
     top: 10.5rem;
 }
 .imageInput{
@@ -182,7 +183,7 @@
 .selectGenres{
     position: relative;
     background-color: rgb(0, 0, 0);
-    left: 15.5rem;
+    left: 12.5rem;
     bottom:7rem;
     width: 9rem;
 
@@ -199,7 +200,7 @@
 .selectPlatforms{
     position: relative;
     background-color: rgb(0, 0, 0);
-    left: 5rem;
+    left: 2rem;
     bottom:9.5rem;
     width: 9rem;
 
@@ -215,7 +216,7 @@
     }
 .labelPlatforms{
     position: relative;
-    left: 7.5rem;
+    left: 6rem;
     bottom:10.5rem;
     color:white;
     font-weight: bold;
@@ -223,7 +224,7 @@
 }
 .labelGenres{
     position: relative;
-    left: 18rem;
+    left: 16.5rem;
     bottom:8rem;
     color:white;
     font-weight: bold;
@@ -232,7 +233,7 @@
 .divRenderPlatforms{
     position: relative;
     right: 11rem;
-    top: 8rem; 
+    top: 12rem; 
     color: white;
     width: 25rem;
     font-weight: 600;
@@ -241,12 +242,11 @@
     padding: 0.2rem;
 }
 .divRenderGenres{
-    display: flex;
     justify-content: right;
-    position: relative;
-    left: 2rem;
+    position: absolute;
+    left: 32rem;
     width: 10rem;
-    top:8rem; 
+    top:12rem; 
     color: white;
     font-weight: 600;
     font-size: 0.8rem;

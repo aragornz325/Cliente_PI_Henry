@@ -93,7 +93,7 @@ left: 1rem;
 }
 .dateDiv {
     position: relative;
-    top: -0.5rem;
+    top: -1.5rem;
     z-index: 2;
     left: -1rem;
     }
@@ -154,10 +154,10 @@ left: 1rem;
 
 
 .labelGenres {
+position: absolute;
 color: white;
 font-weight: bold;
-position: relative;
-bottom: 18rem;
+bottom: 10rem;
 left: 28.2rem;
 z-index: 2;
 }
@@ -295,9 +295,9 @@ transition: 0.7s;
 
 .buttonhome {
     text-decoration: none;
-    position: absolute;
-    left: 60px;
-    top: 24rem;
+    position: relative;
+    left: 1rem;
+    top: -20rem;
     width: 100px;
     height: 50px;
     padding: 8px;
