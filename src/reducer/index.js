@@ -130,8 +130,8 @@ function rootReducer (state = initialState, action) {
                     };
 
         case ORDENAR_GENEROS:
-            const AllVideogames = state.allvideogames;
-      const genresFiltered = action.payload === "TODOS" ? AllVideogames : AllVideogames.filter((game) =>  game.genres.find((genre) => {
+            const AllVideogames = state.videogames;
+      const genresFiltered = action.payload === "TODOS" ? state.allvideogames : AllVideogames.filter((game) =>  game.genres.find((genre) => {
                 return genre.name === action.payload;
                     })
             );
