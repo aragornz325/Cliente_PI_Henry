@@ -160,7 +160,7 @@ function rootReducer (state = initialState, action) {
             };
         
         case FILTRAR_ORIGEN:
-            const AllVideogames2 = state.allvideogames;
+            const AllVideogames2 = state.videogames;
             const filterByOrigin =
             action.payload === "db" ?
            AllVideogames2.filter((e) => e.createdInDb === true)

@@ -6,8 +6,9 @@
     -o-background-size: cover;
     background-size: cover; 
     display: flex;
-    min-height: 48rem;
+    min-height: 52rem;
     background-position: bottom;
+    height: 100%vh;
 }
 
 .form{
@@ -28,9 +29,9 @@
 .transparentForm{
     display: flex;
     position: relative;
-    width: 40rem;
-    height: 35rem;
-    top: 5rem;
+    width: 42rem;
+    height: 33rem;
+    top: 2rem;
     border-radius: 3rem;
     border: solid;
     background-color: rgba(80, 95, 235, 0.459);
@@ -39,9 +40,9 @@
 
 .buttonhoome{
     text-decoration: none;
-    position: relative;
-    left: 6rem;
-    top: 35.5rem;
+    position: absolute;
+    right: 3rem;
+    top: 22.5rem;
     width: 9rem;
     height: 4rem;
     padding: 8px;
@@ -50,8 +51,9 @@
     font-size: 15px;
     color:rgb(0, 0, 0);
     font-weight: 700;
-    background-color: rgba(236, 33, 60, 0.561);
+    background-color: rgba(255, 0, 34, 0.733);
     box-shadow: 5px 5px 5px black;
+    text-decoration: none;
 }
 .buttonhoome:hover {
     background-color: rgb(0, 0, 0);
@@ -62,7 +64,7 @@
 .buttonDone{
     position: relative;
     left: 12rem;
-    top: 11rem;
+    top: 9rem;
     width: 100px;
     padding: 15px;
     border-radius: 20px;
@@ -232,31 +234,33 @@
 }
 .divRenderPlatforms{
     position: relative;
-    right: 11rem;
+    right: 12.5rem;
     top: 12rem; 
     color: white;
     width: 25rem;
     font-weight: 600;
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     z-index: 2;
     padding: 0.2rem;
 }
 .divRenderGenres{
-    justify-content: right;
+    
     position: absolute;
-    left: 32rem;
+    left: 30.2rem;
     width: 10rem;
     top:12rem; 
     color: white;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     z-index: 2;
+    padding: 0.2rem;
     
 }
 .buttonXplatforms{
-    position: relative;
-    right: 2px;
-    height: 16px;
+    position: absolute;
+    right: 2rem;
+    width: 15px;
+    height: 20px;
     border-radius: 5px;
     border-style: none;
     font-weight: bold;
@@ -268,12 +272,12 @@
 }
 .buttonXplatforms :hover{
 transform: scale(0.9);
-background-color: red;
+background-color: rgb(51, 255, 0);
 }
 
 .buttonXgenres{
-    position: relative;
-    right: 2px;
+    position: absolute;
+    right: 2.5rem;
     height: 16px;
     border-radius: 5px;
     border-style: none;
