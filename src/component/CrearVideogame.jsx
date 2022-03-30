@@ -238,11 +238,12 @@ const handleChange = (e) => {
           
             </div>
           ))}
-      <button  className="buttonhoome" >
             <Link to="/home"> 
+            <button  
+            className="buttonhoome" >
             volver a casa
-            </Link>
           </button>
+            </Link>
         </div>
       </div>
       
