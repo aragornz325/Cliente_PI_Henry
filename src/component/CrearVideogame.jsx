@@ -130,6 +130,7 @@ const handleChange = (e) => {
           </div>
           <div className="dateDiv">
             <input
+              placeholder="fecha lazamiento"
               className="dateInput"
               type="Date"
               min="1952-01-01"
@@ -142,14 +143,14 @@ const handleChange = (e) => {
           <div className="ratinDiv">
             <input
               className="ratinInput"
-              placeholder="Debe ingresar un número entre 1 y 5"
+              placeholder="Ting / número entre 1 y 5"
               title="rating"
               id="Rating"
-              step="any"
+              step="0.5"
               type="number"
               value={form.rating}
-              min="1,0"
-              max="5,0"
+              min="1.0"
+              max="5.0"
               name="rating"
               onChange={(e) => handleChange(e)}
               

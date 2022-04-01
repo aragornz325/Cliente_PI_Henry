@@ -10,7 +10,8 @@ import { GET_INICIAL,
     BORRAR_DETALLES,
     SET_FAVORITOS,
     BORRAR_FAVORITO,
-    SET_PAGINA } from '../action/constantes.js'
+    SET_PAGINA,
+    FILTRAR_CUATRO } from '../action/constantes.js'
 
 let initialState = {
     videogames: [],
@@ -19,7 +20,8 @@ let initialState = {
     genres: [],
     detail: null,
     flagLoad: false,
-    pagina: 1
+    pagina: 1,
+    filtrados:[]
 }
 
 
@@ -135,7 +137,8 @@ function rootReducer (state = initialState, action) {
                 return genre.name === action.payload;
                     })
             );
-                    return {
+
+            return {
         ...state,
         videogames: genresFiltered,
                     };
@@ -160,18 +163,19 @@ function rootReducer (state = initialState, action) {
             };
         
         case FILTRAR_ORIGEN:
-            const AllVideogames2 = state.videogames;
+            const AllVideogames2 = state.allvideogames;
             const filterByOrigin =
             action.payload === "db" ?
-           AllVideogames2.filter((e) => e.createdInDb === true)
-          : 
-          AllVideogames2.filter((e) => e.createdInDb === false);
-          return {
+        AllVideogames2.filter((e) => e.createdInDb === true)
+        : 
+        AllVideogames2.filter((e) => e.createdInDb === false);
+        return {
             ...state,
             videogames:
-              action.payload === "todos" ? state.allvideogames : filterByOrigin,
-          };      
-
+            action.payload === "todos" ? state.allvideogames : filterByOrigin,
+        };
+        
+        
         default: 
                 return { ...state}
     }

@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import Card from "./Card";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filtrarorigen, setpagina } from "../action";
+import { getAllVideoGames, getGenres, ordenalfabetico, ordenrating, ordengeneros, filtrarorigen, setpagina, filtrarcuatro } from "../action";
 import Paginador from "./paginador";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
@@ -65,8 +65,9 @@ const Home = () => {
     window.location.reload();
     // dispatch(getAllVideoGames());
     // dispatch(setpagina(1))
-
     }
+
+    
     
       
     useEffect(()=>{
@@ -100,8 +101,6 @@ return (
         
         </div>
 
-       
-   
     <div className="filtersCss">
 
         <div className="alphabeticalOrder">
@@ -185,8 +184,8 @@ return (
       ) : (
         <div className="parent">
           <div className="favoritos">
-          { favoritos ? (
-            favoritos.map((e)=>{
+          { favoritos ? 
+          ( favoritos.map((e)=>{
               return (
                 <Card
                 className
@@ -199,8 +198,8 @@ return (
                 isList
                 />
                 
-
-              )
+                
+                )
             }
             )
              ):(undefined)}
